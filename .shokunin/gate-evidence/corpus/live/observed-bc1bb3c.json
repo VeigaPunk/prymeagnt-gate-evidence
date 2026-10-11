@@ -1,0 +1,75 @@
+{
+  "changed_files": {
+    "command": [
+      "git",
+      "diff",
+      "--name-only",
+      "bc1bb3c572981158f8ac0b4994d3333741650886^",
+      "bc1bb3c572981158f8ac0b4994d3333741650886"
+    ],
+    "exit_code": 0,
+    "stderr": "",
+    "stdin": null,
+    "stdout": ".shokunin/gate-evidence/corpus/README.md\n.shokunin/gate-evidence/corpus/live/README.md\n.shokunin/gate-evidence/corpus/live/audit_gate.py\n"
+  },
+  "context": {
+    "commit": "bc1bb3c572981158f8ac0b4994d3333741650886",
+    "cwd": "/home/vgpnk/Projects/prymeagnt-gate-evidence-r4",
+    "environment": {
+      "GIT_CONFIG_GLOBAL": null,
+      "GIT_CONFIG_NOSYSTEM": null,
+      "GIT_CONFIG_SYSTEM": null,
+      "GIT_INDEX_FILE": null,
+      "LANG": "en_US.UTF-8",
+      "LC_ALL": null,
+      "PATH": "/home/vgpnk/.kimi-code/bin:/home/vgpnk/.local/share/mise/installs/node/latest/bin:/home/vgpnk/.local/share/mise/shims:/run/user/1000/fnm_multishells/2826_1791756229535/bin:/home/vgpnk/.local/share/fnm:/home/vgpnk/.local/share/omarchy/bin:/run/user/1000/fnm_multishells/2826_1791756229535/bin:/home/vgpnk/.local/share/fnm:/home/vgpnk/.opencode/bin:/home/vgpnk/.local/bin:/home/vgpnk/.local/share/omarchy/bin:/run/user/1000/fnm_multishells/1615_1791756174314/bin:/home/vgpnk/.local/share/fnm:/home/vgpnk/.opencode/bin:/home/vgpnk/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/home/vgpnk/.local/bin:/home/vgpnk/.local/bin"
+    },
+    "git_executable": "/usr/bin/git",
+    "git_version": {
+      "command": [
+        "git",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "stdin": null,
+      "stdout": "git version 2.55.0\n"
+    },
+    "platform": "Linux-7.2.3-arch1-3-x86_64-with-glibc2.44",
+    "python": "3.14.7 (main, Aug 10 2026, 07:46:56) [GCC 16.1.1 20260728]"
+  },
+  "interpretation": {
+    "goal_complete_called": false,
+    "loop_stop": "not-assessed",
+    "mission_goal": "not-assessed",
+    "negative_control": "fail",
+    "project_gate": "pass"
+  },
+  "negative_control": {
+    "command": [
+      "git",
+      "diff",
+      "--no-index",
+      "--check",
+      "/dev/null",
+      "/dev/stdin"
+    ],
+    "exit_code": 3,
+    "stderr": "",
+    "stdin": "negative-control trailing-space \n",
+    "stdout": "/dev/stdin:1: trailing whitespace.\n+negative-control trailing-space \n"
+  },
+  "project_gate": {
+    "command": [
+      "git",
+      "diff",
+      "--check",
+      "bc1bb3c572981158f8ac0b4994d3333741650886^",
+      "bc1bb3c572981158f8ac0b4994d3333741650886"
+    ],
+    "exit_code": 0,
+    "stderr": "",
+    "stdin": null,
+    "stdout": ""
+  }
+}
