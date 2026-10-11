@@ -7,5 +7,6 @@
 | fixtures/README.md | round-2 deterministic table exercise, input/expected/actual and checker | 2026-10-11 |
 | fixtures/autonomous-cases.json | round-3 synthetic retry-ceiling and gate-pass/unmet-goal branch inputs, with checker and actual | 2026-10-11 |
 | live/README.md | round-4 read-only live Git whitespace gate and controlled negative control | 2026-10-11 |
+| knowledge/goal-read-boundary-r5.md | round-5 child-session goal read boundary and five-row status/receipt decision table | 2026-10-11 |
 
 Append new lessons; corrections are additional entries, never destructive rewrites.

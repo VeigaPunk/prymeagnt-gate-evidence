@@ -1,0 +1,12 @@
+{
+  "query": "await goal.get()",
+  "scope": "this child session",
+  "result": {
+    "goal": null,
+    "remaining_tokens": null,
+    "completion_budget_report": null
+  },
+  "parent_goal": "not-queried",
+  "autonomous_receipt": "not-observed",
+  "notes": "No parent-target argument in documented goal.get(); family observation reports session relationships but not goal state. No parent objective or session identifiers persisted."
+}
