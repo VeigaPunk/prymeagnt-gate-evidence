@@ -16,6 +16,6 @@
 - [~] Real decision table with cited sources: `.shokunin/gate-evidence/corpus/knowledge/gate-decision-table.md:1-15`; no named non-author verifier.
 - [ ] End-to-end domain task executed and logged: synthetic fixtures only; no live gate.
 - [~] Instructions executable without oral context: `.shokunin/gate-evidence/corpus/fixtures/README.md:1-11`; no named non-author verifier.
-- [~] No cross-domain bleed; PROVINCE remains accurate: `.shokunin/gate-evidence/PROVINCE.md:1-13`; no named non-author verifier.
+- [~] No cross-domain bleed; PROVINCE remains accurate: `.shokunin/gate-evidence/PROVINCE.md:1-12`; no named non-author verifier.
 
 No operator question opened. No L2 sub-lanes dispatched: this bounded local fixture task did not warrant delegation. Push/publication remain L1-owned.
