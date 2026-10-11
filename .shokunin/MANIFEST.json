@@ -249,6 +249,18 @@
       "promotions": [],
       "minted": [],
       "notes": "Gate R5 candidate corpus bb0d003 judgment 7622b8a report 7230a19: child goal.get() twice returned null, proving child goal read cannot assess parent; five-row boundary table check exit0. Coverage improved/calibration unchanged proposed; no parent goal/autonomous receipt, SHONEN end-to-end unchecked. Skill R5 candidate work dce58a3/report d230eba: safe daemon reload declined; private before/after fresh CLI inventory probe exit0; freshness/operability unchanged, SHONEN end-to-end unchecked. Independent review pending; no promotion."
+    },
+    {
+      "round": 5,
+      "date": "2026-10-11",
+      "type": "closure-correction",
+      "lanes": {
+        "gate-evidence": "ok",
+        "skill-discovery": "no-axis-advance"
+      },
+      "promotions": [],
+      "minted": [],
+      "notes": "Named non-author goal-boundary-and-freshness-review at bff8d3d independently repeated child goal.get() null and checker exit0; L1 admits only narrow gate coverage improved/calibration unchanged because parent goal untouched and autonomy untested. Same reviewer reran private before/after fresh CLI inventory with distinct PIDs and scratch cleanup; skill R5 freshness unchanged/operability unchanged, not an improving admitted craft move. Both SHONEN end-to-end boxes stay unchecked; no promotion. Separate read-only scouts examine safe actual goal/reload paths."
     }
   ]
 }
