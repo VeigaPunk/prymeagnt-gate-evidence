@@ -1,0 +1,32 @@
+[
+  {
+    "id": "retry-limit-gate-failed",
+    "autonomous_gate": "failed_retries_exhausted",
+    "baseline": "pass",
+    "candidate": "failed",
+    "criteria": "unverified",
+    "expected": {
+      "id": "retry-limit-gate-failed",
+      "case": "A0",
+      "candidate_gates_passed": false,
+      "mission_goal": "not-assessed",
+      "goal_complete_permitted": false,
+      "loop_stop": "unclassified"
+    }
+  },
+  {
+    "id": "gate-pass-goal-unmet",
+    "autonomous_gate": "passed_goal_unmet",
+    "baseline": "pass",
+    "candidate": "pass",
+    "criteria": "unmet",
+    "expected": {
+      "id": "gate-pass-goal-unmet",
+      "case": "A1",
+      "candidate_gates_passed": true,
+      "mission_goal": "incomplete",
+      "goal_complete_permitted": false,
+      "loop_stop": "unclassified"
+    }
+  }
+]
