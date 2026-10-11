@@ -70,6 +70,17 @@
       "promotions": [],
       "minted": [],
       "notes": "Supersedes only round-3 closure note saying independent review pending; named non-author round3-promotion-review at c8129fd reran native controls: harness 2/2 negatives + 2/2 positives and live audit 4/4; RLM synthetic verifier positive and wrong/unsettled negatives; gate legacy 7/7 + new 2/2 synthetic fixtures; skill isolated winner fixture positive, missing/drifted/winner-mismatch negative. Round-3 moves independently verified. Harness 3/3 + 4/4 SHONEN but hard-coded shonen rank blocks promotion pending transition fix. RLM has only 2/3 admitted rounds. Gate and skill each retain unchecked end-to-end SHONEN box. No promotions authorized now."
+    },
+    {
+      "round": 4,
+      "date": "2026-10-11",
+      "type": "closure",
+      "lanes": {
+        "harness-integrity": "in-flight"
+      },
+      "promotions": [],
+      "minted": [],
+      "notes": "Rank-transition safety work 2fa231e4 and report f0a598d4 from craft/harness-integrity-r4 integrated path-scoped after parent round-3 review LOG conflict resolved by preserving both append-only entries. L1 reran native rank mutation suite: authorized synthetic promotion 4/4, 5/5 negative controls rejected, 3/3 positives accepted, live unpromoted 4/4. Calibration candidate improved/depth unchanged. Independent r4 reviewer pending; no promotion or roster row until review."
     }
   ]
 }
