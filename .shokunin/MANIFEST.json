@@ -261,6 +261,30 @@
       "promotions": [],
       "minted": [],
       "notes": "Named non-author goal-boundary-and-freshness-review at bff8d3d independently repeated child goal.get() null and checker exit0; L1 admits only narrow gate coverage improved/calibration unchanged because parent goal untouched and autonomy untested. Same reviewer reran private before/after fresh CLI inventory with distinct PIDs and scratch cleanup; skill R5 freshness unchanged/operability unchanged, not an improving admitted craft move. Both SHONEN end-to-end boxes stay unchecked; no promotion. Separate read-only scouts examine safe actual goal/reload paths."
+    },
+    {
+      "round": 7,
+      "date": "2026-10-11",
+      "type": "closure",
+      "lanes": {
+        "harness-integrity": "in-flight"
+      },
+      "promotions": [],
+      "minted": [],
+      "notes": "R7 candidate work 223b93a/report 5be6b01: valid but wrong cited callable accepted baseline 4/4 and rejected new 3/4; live four 4/4/fifth fixture 5/5. Calibration improved/depth unchanged proposed; copied-state, no live corruption, non-author review pending."
+    },
+    {
+      "round": 6,
+      "date": "2026-10-11",
+      "type": "closure",
+      "lanes": {
+        "rlm-dispatch": "no-axis-advance",
+        "gate-evidence": "in-flight",
+        "skill-discovery": "no-axis-advance"
+      },
+      "promotions": [],
+      "minted": [],
+      "notes": "Dispatch R6 ad9ba93 found no evidence for preview truncation/status linkage; seven fixture outcomes retained, both axes unchanged. Gate R6 work df2dfc7/report d1a17a8 parent-owned redacted status+UTC contract and actual benign Git gate fixture positive/negative: calibration improved/coverage unchanged proposed, actual parent status/host autonomous not supplied, SHONEN unchecked pending independent review. Skill R6 work b0d0f78/report a997b62 conservative daemon path preflight with fake positive/negative fixtures, no daemon launched; freshness/operability unchanged, SHONEN unchecked. No promotion."
     }
   ]
 }
