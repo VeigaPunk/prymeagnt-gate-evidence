@@ -42,6 +42,20 @@
       "promotions": [],
       "minted": [],
       "notes": "L1 judged owned axes: harness-integrity calibration improved/depth unchanged (df0c432, missing-skill negative 3/4 plus intact/live 4/4); rlm-dispatch operability improved/calibration improved (85cf3ab, explicit OpenAI Luna child handle/registry/model_change/terminal collect); gate-evidence calibration improved/coverage unchanged (d0a028b, synthetic fixtures 7/7, NO live gate claim); skill-discovery freshness improved/operability unchanged (693b9e5, probe detected 2/3 winning installed copies drifted, 3/3 fresh-process discovery; probe exit 1 is EXPECTED drift signal, not test pass). One-axis work per lane; source trees read-only; L0 shared question appended by skill-discovery, rlm-dispatch question to be parent appended after settlement. No non-author SHONEN promotion yet."
+    },
+    {
+      "round": 3,
+      "date": "2026-10-11",
+      "type": "closure",
+      "lanes": {
+        "harness-integrity": "ok",
+        "rlm-dispatch": "ok",
+        "gate-evidence": "ok",
+        "skill-discovery": "ok"
+      },
+      "promotions": [],
+      "minted": [],
+      "notes": "L1 provisional closure after native checks: harness-integrity ecb3307/c20806d calibration improved/depth unchanged (two negative mutation controls fail, two positive 4/4 pass); rlm-dispatch d00cf1b/e1f5c8f operability improved/calibration unchanged (fixture verifier good exit0, wrong/unsettled exit1; no new live receipt); gate-evidence 8bbcd4a/f6bb1ce/e393c00 coverage improved/calibration unchanged (two extra synthetic retry/goal fixtures, 2/2; live stop unclassified); skill-discovery d0e5c46/995a162 operability improved/freshness unchanged (L1 isolated fixture positive exit0 and missing/drifted winner exit1; no live install/reload). Reports cite committed hashes, lane authorship scoped. Round-3 independent non-author reviewer pending. L0 questions appended without in-scope lane writes; promotions blocked pending review."
     }
   ]
 }

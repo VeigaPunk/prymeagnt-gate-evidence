@@ -26,3 +26,9 @@
 
 ## Independent review receipts — rounds 1–2
 - `round1-independent-review` at `65a1d7b8215bf1bb764c0c9957f217a930f27b78` verified sourced admission table and owned province, but no new lane-owned spawn (boxes 2/3 deferred). `round2-independent-review` at `68b425729ffbceb2d4fdfc59d1e154a52360de3f` independently read depth-2 child transcript and registry: openai-codex/gpt-6-luna model_change, exact `rlm-dispatch-round2-ok` reply and parent collect done/settled=True/error=None after 49,509ms. Recommends SHONEN boxes 1–4 for bounded explicit-selector admission/settlement only. L1 records verifier names; rank remains shonen until >=3 verified rounds.
+
+## Round 3 — 2026-10-11
+- Added a read-only fixed-selector receipt verifier and sanitized positive/negative fixtures at `corpus/verification/`; reproducible command and checks are in the round-3 report.
+- Validation outcome: positive fixture accepted (exit 0); wrong provider/model plus running/unsettled fixture rejected (exit 1). This is synthetic fixture evidence, not a new runtime admission receipt.
+- Operability: improved (a reusable local verifier now detects wrong routing and unsettled receipts; baseline had no verifier). Calibration: unchanged (no additional live admission/settlement observation; fixture checks only validate the verifier implementation).
+- Proposed harness self-refinement: add an RLM-dispatch procedure requiring local sanitized fixture-based checks after runtime receipts, with explicit separation of synthetic verifier tests from live admission evidence. Falsification: reject this proposal if a subsequent independent lane cannot reproduce the positive/negative exits from the documented command on the committed fixtures, or if the verifier mutates inputs / makes network calls. Awaiting L1 approval; no global harness edit made.
