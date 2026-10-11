@@ -350,6 +350,28 @@
       "promotions": [],
       "minted": [],
       "notes": "R7 candidate work 7abe5fb/report bb83501: same-child swapped session path false PASS baseline, now reject using observed registry sessionFile; eight fixture exits 0/1/0/1/1/0/1/1. Operability improved/calibration unchanged proposed; synthetic-only, non-author review pending."
+    },
+    {
+      "round": 8,
+      "date": "2026-10-11",
+      "type": "closure-correction",
+      "lanes": {
+        "harness-integrity": "ok"
+      },
+      "promotions": [],
+      "minted": [],
+      "notes": "Named non-author promotion-and-session-review at 984a3a6 independently proved previous copied promotion_round=3 falsely passes 4/4 vs ledger R4; updated both promoted lanes reject 3/4, live 4/4 and synthetic fifth 5/5 retained. L1 admits R8 calibration improved/depth unchanged; no coordinated-forgery/live-drift claim."
+    },
+    {
+      "round": 7,
+      "date": "2026-10-11",
+      "type": "closure-correction",
+      "lanes": {
+        "rlm-dispatch": "ok"
+      },
+      "promotions": [],
+      "minted": [],
+      "notes": "Same non-author reviewer reran eight synthetic fixture outcomes 0/1/0/1/1/0/1/1; old verifier false PASS same-ID swapped path, updated checks observed registry sessionFile. L1 admits R7 operability improved/calibration unchanged; no authenticated provider or runtime proof; actual absolute path portability limited."
     }
   ]
 }

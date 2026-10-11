@@ -74,3 +74,6 @@
 - Work: `corpus/knowledge/audit.py`, `mutation_test.py`, `lessons/round-8-calibration.md`, index, scorecard and this log. Use the project's kernel interpreter to run mutation_test.py and audit.py. Work commit cited in round-8 report. MANIFEST, global harness, source files and other lanes untouched; no push.
 - Verdict: calibration **improved** for copied promotion-round mismatch detection; depth **unchanged**. L1 judges admission; no semantic promotion validation or observed live drift. Falsify on false acceptance of wrong round or false rejection of valid round 4/fifth mint.
 - Proposed, not applied, global procedure/memory update for L1: test roster promotion_round against ledger round with both promoted-lane mismatch negatives and valid round-4/fifth-mint positives. The prior copied false accept is a fixture result, not a live incident.
+
+## R8/R7 independent review and L1 judgment
+- Named non-author promotion-and-session-review at 984a3a6 independently ran prior audit against copied roster promotion_round=3 while ledger says round4: old false pass 4/4; updated both promoted lanes reject 3/4. Native mutation/live 4/4 and synthetic fifth mint 5/5 retained. L1 admits R8 calibration improved/depth unchanged; no coordinated forged ledger/roster or live-drift proof.
