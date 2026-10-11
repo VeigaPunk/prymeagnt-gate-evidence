@@ -23,3 +23,6 @@
 - Durable redacted receipt: `.shokunin/rlm-dispatch/corpus/knowledge/2026-10-11-round2-admission.md`; corpus index row appended in `.shokunin/rlm-dispatch/corpus/README.md`.
 - Operability: improved (first independently performed, durable lane-owned selector-admission and terminal-settlement receipt; count 0 → 1 in assigned round-2 receipts corpus, command/report details). Calibration: improved (independent runtime admission and terminal evidence confirms the procedure's distinction between admission, transient idle, and settlement). These are lane proposals; L1 judges.
 - No >=8 wave: assignment specifies one bounded self-owned probe, not a multi-lane task.
+
+## Independent review receipts — rounds 1–2
+- `round1-independent-review` at `65a1d7b8215bf1bb764c0c9957f217a930f27b78` verified sourced admission table and owned province, but no new lane-owned spawn (boxes 2/3 deferred). `round2-independent-review` at `68b425729ffbceb2d4fdfc59d1e154a52360de3f` independently read depth-2 child transcript and registry: openai-codex/gpt-6-luna model_change, exact `rlm-dispatch-round2-ok` reply and parent collect done/settled=True/error=None after 49,509ms. Recommends SHONEN boxes 1–4 for bounded explicit-selector admission/settlement only. L1 records verifier names; rank remains shonen until >=3 verified rounds.
