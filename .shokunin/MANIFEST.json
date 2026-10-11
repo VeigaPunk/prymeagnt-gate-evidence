@@ -10,6 +10,16 @@
       ],
       "harness_spec": "global:primeagent-harness-integrity",
       "promotion_round": 4
+    },
+    "rlm-dispatch": {
+      "rank": "shokunin",
+      "province": ".shokunin/rlm-dispatch/PROVINCE.md",
+      "axes": [
+        "operability",
+        "calibration"
+      ],
+      "harness_spec": "global:primeagent-rlm-dispatch",
+      "promotion_round": 4
     }
   },
   "rounds": [
@@ -131,6 +141,34 @@
       "promotions": [],
       "minted": [],
       "notes": "rlm-dispatch R4 candidate work 04559ca report b49762f: mixed-child fixture accepted before, rejected after; five fixture outcomes 0/1/0/1/1 independently rerun, operability improved/calibration unchanged synthetic-only. R1 failed so this would be third admitted round only after independent review; no promotion yet."
+    },
+    {
+      "round": 5,
+      "date": "2026-10-11",
+      "type": "closure-correction",
+      "lanes": {
+        "harness-integrity": "ok"
+      },
+      "promotions": [],
+      "minted": [],
+      "notes": "Supersedes R5 in-flight status: named non-author growth-and-dispatch-review at 291ecd3 reran native positive fifth mint 5/5, duplicate ID and unmatched checklist negatives, retained existing rank/invalid-ref controls, live 4/4. L1 admits depth improved/calibration unchanged; rank already shokunin, no new promotion. Global procedure/memory self-update proposed, to validate separately."
+    },
+    {
+      "round": 4,
+      "date": "2026-10-11",
+      "type": "closure-correction",
+      "lanes": {
+        "rlm-dispatch": "ok"
+      },
+      "promotions": [
+        {
+          "id": "rlm-dispatch",
+          "from": "shonen",
+          "to": "shokunin"
+        }
+      ],
+      "minted": [],
+      "notes": "Supersedes R4 in-flight status: named non-author growth-and-dispatch-review at 291ecd3 independently reran 5 sanitized fixture exits 0/1/0/1/1; old verifier accepted mixed-child, new rejects it; operability improved/calibration unchanged synthetic-only. Admitted verified rounds r2,r3,r4 (r1 remains failed). SHONEN 4/4 checked by named round1/round2 reviewers; r3 and r4 independently verified. L1 authorizes shonen->shokunin narrowly for OpenAI model admission/settlement evidence; no live authentication claim and no UFO L1 authority. Global spec update and live rank audit required."
     }
   ]
 }

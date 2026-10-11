@@ -42,3 +42,6 @@
 - Falsifiable measure: the mixed-child fixture (registry/session child `sub-fixture-a`, settlement child `sub-fixture-b`) passed the prior verifier (`PASS`, exit 0) and is now rejected with `collect child ID does not match registry childId` (exit 1). Documented five commands retain the previous valid and invalid cases, and add linked-positive and wrong-reply negatives.
 - Operability: improved (mixed-child counterfeit accepted → rejected; reproducible synthetic fixture checks). Calibration: unchanged (synthetic fixtures validate implementation only, not authenticated live provenance).
 - All fixture data is sanitized and synthetic; no live provenance or runtime receipt is claimed. No non-OpenAI selector was used for a live spawn.
+
+## Independent review and L1 decision
+- Named non-author `growth-and-dispatch-review` at `291ecd39187451187377d11f3913f49f20c427f1` independently reran five synthetic fixture outcomes 0/1/0/1/1 and old verifier against same mixed-child fixture PASS exit0 versus new FAIL exit1. L1 admits R4 operability improved/calibration unchanged; rounds 2,3,4 are three admitted independently verified rounds (round 1 remains failed). All four SHONEN boxes have named prior non-author verification. L1 authorizes narrow shonen→shokunin promotion; no claim of authenticated live receipt from synthetic tests.
