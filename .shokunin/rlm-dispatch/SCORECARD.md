@@ -4,8 +4,8 @@ Owned axes: operability, calibration. Scores are not assigned without a measured
 
 | axis | score | evidence / counting command | last change |
 |---|---|---|---|
-| operability | unprovable-but-better | Decision table added; durable receipt count stays 1 (same source log existed at baseline); see round-1 report | round 1 |
-| calibration | unchanged | No new independently inspected admission/runtime evidence; see round-1 report | round 1 |
+| operability | improved (proposed) | Round-2 independently captured lane-owned explicit-selector admission/terminal settlement receipt; corpus count command in round-2 report | round 2 |
+| calibration | improved (proposed) | Independent handle + registry + model_change + completed collect receipt supports calibrated distinction; round-2 report | round 2 |
 
-planned: first round tests one falsifiable improvement of first axis; preserve the other.
+planned: L1 independently judge round-2 evidence and owned-axis verdicts.
 retired: none.

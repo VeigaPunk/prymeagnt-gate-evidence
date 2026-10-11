@@ -28,6 +28,20 @@
       "promotions": [],
       "minted": [],
       "notes": "L1 closure after isolated OpenAI spawns: harness-integrity(sol) work c1ee05b report 6e0a803, depth improved/calibration unchanged; gate-evidence(sol) work d9c1793 report 79bcf89, coverage improved/calibration unchanged; skill-discovery(luna) work 7488c6c report 1487c2d, operability improved/freshness unchanged. rlm-dispatch(luna) work f122105 report 61814c5: operability unprovable-but-better/calibration unchanged; prior receipt count 1->1, no admission; corrected in its LOG. Checks: read-only live harness triple 4/4, documented table rows 5 and checklist checkpoints 4; no live gate run or non-author SHONEN check. Reports cite existing commits."
+    },
+    {
+      "round": 2,
+      "date": "2026-10-11",
+      "type": "closure",
+      "lanes": {
+        "harness-integrity": "ok",
+        "rlm-dispatch": "ok",
+        "gate-evidence": "ok",
+        "skill-discovery": "ok"
+      },
+      "promotions": [],
+      "minted": [],
+      "notes": "L1 judged owned axes: harness-integrity calibration improved/depth unchanged (df0c432, missing-skill negative 3/4 plus intact/live 4/4); rlm-dispatch operability improved/calibration improved (85cf3ab, explicit OpenAI Luna child handle/registry/model_change/terminal collect); gate-evidence calibration improved/coverage unchanged (d0a028b, synthetic fixtures 7/7, NO live gate claim); skill-discovery freshness improved/operability unchanged (693b9e5, probe detected 2/3 winning installed copies drifted, 3/3 fresh-process discovery; probe exit 1 is EXPECTED drift signal, not test pass). One-axis work per lane; source trees read-only; L0 shared question appended by skill-discovery, rlm-dispatch question to be parent appended after settlement. No non-author SHONEN promotion yet."
     }
   ]
 }
