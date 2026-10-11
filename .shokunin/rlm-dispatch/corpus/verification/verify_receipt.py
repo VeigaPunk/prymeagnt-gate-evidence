@@ -33,6 +33,11 @@ def verify(registry_path, session_path, settlement_path):
     if not isinstance(child_id, str) or not child_id:
         errors.append("registry childId is missing")
     session_file = Path(session_path)
+    registered_session = registry.get("sessionFile")
+    if not isinstance(registered_session, str) or not registered_session:
+        errors.append("registry sessionFile is missing")
+    elif Path(registered_session).resolve() != session_file.resolve():
+        errors.append("session path does not match registry sessionFile")
     if child_id and session_file.parent.name != child_id:
         errors.append("session path child ID does not match registry childId")
     if settlement.get("rlm_child_id") != child_id:

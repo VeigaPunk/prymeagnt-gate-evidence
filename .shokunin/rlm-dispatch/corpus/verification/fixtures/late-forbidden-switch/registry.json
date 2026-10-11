@@ -1,1 +1,9 @@
-{"childId": "sub-fixture-a", "model": {"provider": "openai-codex", "modelId": "gpt-6-luna"}, "status": "completed"}
+{
+  "childId": "sub-fixture-a",
+  "model": {
+    "provider": "openai-codex",
+    "modelId": "gpt-6-luna"
+  },
+  "status": "completed",
+  "sessionFile": ".shokunin/rlm-dispatch/corpus/verification/fixtures/late-forbidden-switch/sub-fixture-a/session.jsonl"
+}

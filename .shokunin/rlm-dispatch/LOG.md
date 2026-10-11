@@ -58,3 +58,9 @@
 
 ## R6 independent review and L1 judgment
 - Named non-author preflight-and-noaxis-review at a30472f reran seven synthetic fixture exits 0/1/0/1/1/0/1, inspected installed RLM collect `answer_preview: str|None` with no documented truncation or equality guarantee. L1 records R6 operability/calibration unchanged, no admitted axis move or speculative verifier change; no usage depletion evidence.
+
+
+## Round 7 — 2026-10-11
+- Inspected the exact round-2 live observed registry `.sessionFile` field: `rlm-subagent.json` records `sessionFile` alongside `childId`, `sessionDir`, model, and status; the receipt previously reproduced only child ID/model/status. The verifier did not compare this field to the supplied session path.
+- Added a sanitized swapped-session fixture: registry points to the legitimate session path, but caller supplies a copied alternate session under the same `sub-fixture-a` directory name. Before change, verifier PASS (exit 0); after change, FAIL `session path does not match registry sessionFile` (exit 1). Existing seven fixture outcomes remain 0/1/0/1/1/0/1; new eighth is 1. All are synthetic verifier tests, not live authentication/provider/usage evidence.
+- Operability: improved (a same-child-ID, swapped-session counterfeit previously passed and now fails; exact round-2 registry field supports the check). Calibration: unchanged (only verifier fixture behavior changed; no new live RLM observation).

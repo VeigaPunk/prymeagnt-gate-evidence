@@ -328,6 +328,28 @@
       "promotions": [],
       "minted": [],
       "notes": "Operator changed mission duration from 10h to 14h from original 2026-10-11T22:14:30.216885+00:00: stop at 2026-10-12T12:14:30.216885+00:00 or documented OpenAI Codex limit depletion, whichever first. Supersedes goal objective older 08:14:30 text; host goal API has no update and remains active. No early goal.complete. Only OpenAI Codex Sol/Luna spawns."
+    },
+    {
+      "round": 8,
+      "date": "2026-10-11",
+      "type": "closure",
+      "lanes": {
+        "harness-integrity": "in-flight"
+      },
+      "promotions": [],
+      "minted": [],
+      "notes": "R8 candidate work cfd84ca/report 5a66b3f: copied promotion_round=3 incorrectly passed baseline 4/4 vs ledger R4; new wrong-round checks both promoted lanes reject 3/4, live 4/4 and fifth synthetic 5/5 retained. Calibration improved/depth unchanged proposed; non-author review pending."
+    },
+    {
+      "round": 7,
+      "date": "2026-10-11",
+      "type": "closure",
+      "lanes": {
+        "rlm-dispatch": "in-flight"
+      },
+      "promotions": [],
+      "minted": [],
+      "notes": "R7 candidate work 7abe5fb/report bb83501: same-child swapped session path false PASS baseline, now reject using observed registry sessionFile; eight fixture exits 0/1/0/1/1/0/1/1. Operability improved/calibration unchanged proposed; synthetic-only, non-author review pending."
     }
   ]
 }

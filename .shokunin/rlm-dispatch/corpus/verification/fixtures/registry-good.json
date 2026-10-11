@@ -1,1 +1,9 @@
-{"childId": "fixtures", "model": {"provider": "openai-codex", "modelId": "gpt-6-luna"}, "status": "completed"}
+{
+  "childId": "fixtures",
+  "model": {
+    "provider": "openai-codex",
+    "modelId": "gpt-6-luna"
+  },
+  "status": "completed",
+  "sessionFile": ".shokunin/rlm-dispatch/corpus/verification/fixtures/session-good.jsonl"
+}
