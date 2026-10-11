@@ -35,3 +35,10 @@
 
 ## Independent review — round 3
 - Named non-author `round3-promotion-review` at `c8129fdf789e1de9fc17900b1a3b0cea6634abe0` independently reran fixture valid exit 0, wrong route/unsettled exit 1, source input hashes unchanged. R3 operability improved/calibration unchanged, but r1 failed; only 2/3 admitted verified rounds, so no promotion despite four SHONEN boxes. Synthetic verifier is NOT authenticated live provenance.
+
+
+## Round 4 — 2026-10-11
+- Added read-only correlation checks to the sanitized receipt verifier: registry `childId` must match the session directory basename and collect `rlm_child_id`; the sole assistant text reply must match collect `answer_preview`. Schema basis: round-2 receipt records registry child ID and collect `rlm_child_id`/`answer_preview` (corpus knowledge entry); session directory is keyed by child ID in recorded runtime artifacts. No new mandatory receipt keys beyond those observed fields were introduced.
+- Falsifiable measure: the mixed-child fixture (registry/session child `sub-fixture-a`, settlement child `sub-fixture-b`) passed the prior verifier (`PASS`, exit 0) and is now rejected with `collect child ID does not match registry childId` (exit 1). Documented five commands retain the previous valid and invalid cases, and add linked-positive and wrong-reply negatives.
+- Operability: improved (mixed-child counterfeit accepted → rejected; reproducible synthetic fixture checks). Calibration: unchanged (synthetic fixtures validate implementation only, not authenticated live provenance).
+- All fixture data is sanitized and synthetic; no live provenance or runtime receipt is claimed. No non-OpenAI selector was used for a live spawn.

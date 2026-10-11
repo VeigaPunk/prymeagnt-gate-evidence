@@ -4,8 +4,8 @@ Owned axes: operability, calibration. Scores are not assigned without a measured
 
 | axis | score | evidence / counting command | last change |
 |---|---|---|---|
-| operability | improved (proposed) | Round-2 independently captured lane-owned explicit-selector admission/terminal settlement receipt; corpus count command in round-2 report | round 2 |
-| calibration | improved (proposed) | Independent handle + registry + model_change + completed collect receipt supports calibrated distinction; round-2 report | round 2 |
+| operability | improved (proposed) | Round 4: old verifier accepts mixed-child fixture (exit 0); current verifier rejects it (exit 1); command in corpus/verification/README.md; round commit | round 4 |
+| calibration | unchanged (proposed) | No live admission/settlement evidence added; synthetic fixture verifier is not authenticated provenance; round commit | round 4 |
 
-planned: L1 independently judge round-2 evidence and owned-axis verdicts.
+planned: L1 independently judges round-4 linkage improvement; do not promote absent 3 admitted rounds (round 1 failed).
 retired: none.

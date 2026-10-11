@@ -109,6 +109,28 @@
       ],
       "minted": [],
       "notes": "Supersedes round-4 in-flight entry after non-author rank-transition-independent-review at f46cbca: native deep-copy rank transition suite 3/3 positives and 5/5 negatives with exit/FAIL, live before-promotion audit 4/4; L1 admits calibration improved/depth unchanged. 4/4 SHONEN named reviewers round1-independent-review, round2-independent-review, round3-promotion-review, rank-transition-independent-review. Rank scope remains present-state global triple auditing; not arbitrary future ranks or atomic cross-store changes. Global spec rank update and post-promotion live audit required; no gate/skill-discovery/rlm promotion implied."
+    },
+    {
+      "round": 5,
+      "date": "2026-10-11",
+      "type": "closure",
+      "lanes": {
+        "harness-integrity": "in-flight"
+      },
+      "promotions": [],
+      "minted": [],
+      "notes": "Promoted harness-integrity R5 candidate: work 3917c3c report 3e731dd; depth improved/calibration unchanged based on 5/5 synthetic later-mint, duplicate-ID/checklist rejects and retained live 4/4, but independent r5 review pending. Global harness self-update not applied pending review."
+    },
+    {
+      "round": 4,
+      "date": "2026-10-11",
+      "type": "closure",
+      "lanes": {
+        "rlm-dispatch": "in-flight"
+      },
+      "promotions": [],
+      "minted": [],
+      "notes": "rlm-dispatch R4 candidate work 04559ca report b49762f: mixed-child fixture accepted before, rejected after; five fixture outcomes 0/1/0/1/1 independently rerun, operability improved/calibration unchanged synthetic-only. R1 failed so this would be third admitted round only after independent review; no promotion yet."
     }
   ]
 }

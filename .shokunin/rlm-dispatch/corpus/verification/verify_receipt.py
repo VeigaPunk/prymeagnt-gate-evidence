@@ -29,14 +29,34 @@ def verify(registry_path, session_path, settlement_path):
     if settlement.get("error") is not None:
         errors.append("collect receipt has an error")
 
-    events = [json.loads(line) for line in Path(session_path).read_text(encoding="utf-8").splitlines() if line.strip()]
+    child_id = registry.get("childId")
+    if not isinstance(child_id, str) or not child_id:
+        errors.append("registry childId is missing")
+    session_file = Path(session_path)
+    if child_id and session_file.parent.name != child_id:
+        errors.append("session path child ID does not match registry childId")
+    if settlement.get("rlm_child_id") != child_id:
+        errors.append("collect child ID does not match registry childId")
+
+    events = [json.loads(line) for line in session_file.read_text(encoding="utf-8").splitlines() if line.strip()]
     model_changes = [e for e in events if e.get("type") == "model_change"]
     if not model_changes:
         errors.append("session has no model_change provenance")
     elif (model_changes[0].get("provider"), model_changes[0].get("modelId")) != (EXPECTED_PROVIDER, EXPECTED_MODEL):
         errors.append("session provider/model mismatch")
-    if not any(e.get("type") == "message" and e.get("message", {}).get("role") == "assistant" for e in events):
+    replies = [
+        part.get("text", "")
+        for event in events
+        if event.get("type") == "message" and event.get("message", {}).get("role") == "assistant"
+        for part in event.get("message", {}).get("content", [])
+        if part.get("type") == "text"
+    ]
+    if not replies:
         errors.append("session has no assistant response")
+    elif len(replies) != 1:
+        errors.append("session has multiple assistant text replies")
+    elif settlement.get("answer_preview") != replies[0]:
+        errors.append("collect answer does not match session assistant reply")
     return errors
 
 
@@ -50,7 +70,7 @@ def main():
     if errors:
         print("FAIL: " + "; ".join(errors), file=sys.stderr)
         return 1
-    print("PASS: expected selector provenance and terminal settled receipt")
+    print("PASS: expected selector, correlated child, exact reply, and terminal settlement")
     return 0
 
 
