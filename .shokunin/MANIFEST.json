@@ -1,6 +1,17 @@
 {
   "schema": "prime-agent-shokunin-v1",
-  "roster": {},
+  "roster": {
+    "harness-integrity": {
+      "rank": "shokunin",
+      "province": ".shokunin/harness-integrity/PROVINCE.md",
+      "axes": [
+        "depth",
+        "calibration"
+      ],
+      "harness_spec": "global:primeagent-harness-integrity",
+      "promotion_round": 4
+    }
+  },
   "rounds": [
     {
       "round": 0,
@@ -81,6 +92,23 @@
       "promotions": [],
       "minted": [],
       "notes": "Rank-transition safety work 2fa231e4 and report f0a598d4 from craft/harness-integrity-r4 integrated path-scoped after parent round-3 review LOG conflict resolved by preserving both append-only entries. L1 reran native rank mutation suite: authorized synthetic promotion 4/4, 5/5 negative controls rejected, 3/3 positives accepted, live unpromoted 4/4. Calibration candidate improved/depth unchanged. Independent r4 reviewer pending; no promotion or roster row until review."
+    },
+    {
+      "round": 4,
+      "date": "2026-10-11",
+      "type": "closure-correction",
+      "lanes": {
+        "harness-integrity": "ok"
+      },
+      "promotions": [
+        {
+          "id": "harness-integrity",
+          "from": "shonen",
+          "to": "shokunin"
+        }
+      ],
+      "minted": [],
+      "notes": "Supersedes round-4 in-flight entry after non-author rank-transition-independent-review at f46cbca: native deep-copy rank transition suite 3/3 positives and 5/5 negatives with exit/FAIL, live before-promotion audit 4/4; L1 admits calibration improved/depth unchanged. 4/4 SHONEN named reviewers round1-independent-review, round2-independent-review, round3-promotion-review, rank-transition-independent-review. Rank scope remains present-state global triple auditing; not arbitrary future ranks or atomic cross-store changes. Global spec rank update and post-promotion live audit required; no gate/skill-discovery/rlm promotion implied."
     }
   ]
 }

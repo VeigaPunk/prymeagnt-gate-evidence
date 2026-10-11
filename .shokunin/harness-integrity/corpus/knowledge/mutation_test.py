@@ -64,7 +64,15 @@ print(f"invalid import copy: exit 1; verified triples: 3/4; {ref_failure}")
 manifest_path = Path(__file__).resolve().parents[4] / ".shokunin/MANIFEST.json"
 manifest = json.loads(manifest_path.read_text())
 lane = "harness-integrity"
-promoted_manifest = deepcopy(manifest)
+# Start rank-transition fixtures from an explicitly unpromoted copy, even
+# when the real roster has already promoted this lane.
+base_manifest = deepcopy(manifest)
+base_manifest["roster"].pop(lane, None)
+for entry in base_manifest["rounds"]:
+    entry["promotions"] = [p for p in entry.get("promotions", []) if p.get("id") != lane]
+base_state = deepcopy(live)
+base_state.entries["subagent"][f"primeagent-{lane}"].metadata["rank"] = "shonen"
+promoted_manifest = deepcopy(base_manifest)
 promoted_manifest["rounds"].append({
     "round": 4,
     "date": "2026-10-11",
@@ -75,20 +83,20 @@ promoted_manifest["rounds"].append({
     "notes": "synthetic fixture only; not a live promotion",
 })
 promoted_manifest["roster"][lane] = {"rank": "shokunin"}
-promoted_state = deepcopy(live)
+promoted_state = deepcopy(base_state)
 promoted_state.entries["subagent"][f"primeagent-{lane}"].metadata["rank"] = "shokunin"
 promoted_code, promoted_output = audit_with(promoted_state, promoted_manifest)
 assert promoted_code == 0 and "verified triples: 4/4" in promoted_output, promoted_output
 print("authorized promoted copy: exit 0; verified triples: 4/4")
 
-unapproved_manifest = deepcopy(manifest)
+unapproved_manifest = deepcopy(base_manifest)
 unapproved_manifest["roster"][lane] = {"rank": "shokunin"}
 unapproved_code, unapproved_output = audit_with(promoted_state, unapproved_manifest)
 assert (unapproved_code == 1 and "FAIL: harness-integrity: roster rank disagrees with promotion ledger:"
         in unapproved_output and "verified triples: 3/4" in unapproved_output), unapproved_output
 print("unauthorized rank copy: exit 1; verified triples: 3/4; roster disagrees with ledger")
 
-stale_state = deepcopy(live)
+stale_state = deepcopy(base_state)
 stale_code, stale_output = audit_with(stale_state, promoted_manifest)
 assert (stale_code == 1 and "verified triples: 3/4" in stale_output
         and "FAIL: harness-integrity: metadata, scope, rank, or content drifts from books" in stale_output), stale_output
