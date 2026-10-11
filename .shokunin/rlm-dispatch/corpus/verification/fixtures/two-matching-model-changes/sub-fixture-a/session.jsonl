@@ -1,0 +1,3 @@
+{"type":"model_change","provider":"openai-codex","modelId":"gpt-6-luna"}
+{"type":"model_change","provider":"openai-codex","modelId":"gpt-6-luna"}
+{"type":"message","message":{"role":"assistant","content":[{"type":"text","text":"rlm-dispatch-round2-ok"}]}}

@@ -45,3 +45,10 @@
 
 ## Independent review and L1 decision
 - Named non-author `growth-and-dispatch-review` at `291ecd39187451187377d11f3913f49f20c427f1` independently reran five synthetic fixture outcomes 0/1/0/1/1 and old verifier against same mixed-child fixture PASS exit0 versus new FAIL exit1. L1 admits R4 operability improved/calibration unchanged; rounds 2,3,4 are three admitted independently verified rounds (round 1 remains failed). All four SHONEN boxes have named prior non-author verification. L1 authorizes narrow shonen→shokunin promotion; no claim of authenticated live receipt from synthetic tests.
+
+
+## Round 5 — 2026-10-11
+- Tightened the read-only verifier to require every session `model_change` event to match the documented permitted `openai-codex/gpt-6-luna` selector. Added synthetic two-matching-events positive and late-forbidden-switch negative fixtures; retained all five prior fixture outcomes.
+- Falsifiable measure: before change, baseline verifier accepted `late-forbidden-switch` (PASS, exit 0) because only the first route was checked; current verifier rejects it with `session provider/model mismatch` (exit 1). Current seven fixture outcomes: 0/1/0/1/1/0/1 in README order.
+- Calibration: improved for recorded selector consistency (a route-change counterfeit that previously passed is rejected); this remains synthetic test evidence only, not authenticated live provenance or evidence of provider authentication/model usage depletion. Operability: unchanged (same verifier workflow and existing checks).
+- No network calls or mutation of receipt inputs; no global harness edits, push, or source changes.

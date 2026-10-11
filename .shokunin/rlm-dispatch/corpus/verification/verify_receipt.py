@@ -42,7 +42,10 @@ def verify(registry_path, session_path, settlement_path):
     model_changes = [e for e in events if e.get("type") == "model_change"]
     if not model_changes:
         errors.append("session has no model_change provenance")
-    elif (model_changes[0].get("provider"), model_changes[0].get("modelId")) != (EXPECTED_PROVIDER, EXPECTED_MODEL):
+    elif any(
+        (event.get("provider"), event.get("modelId")) != (EXPECTED_PROVIDER, EXPECTED_MODEL)
+        for event in model_changes
+    ):
         errors.append("session provider/model mismatch")
     replies = [
         part.get("text", "")

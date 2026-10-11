@@ -193,6 +193,28 @@
       "promotions": [],
       "minted": [],
       "notes": "Named non-author gate-and-skill-r4-review at 10e7b98 independently replayed pinned positive git diff --check exit0 and stdin negative exit3 and matched receipt; calibration improved/coverage unchanged only for local Git gate. This is NOT goal/autonomous gate, so SHONEN end-to-end remains unchecked. Same reviewer reran private install/frontmatter/fresh-process inventory exit0 and confirmed scratch removal; skill operability improved/freshness unchanged, daemon reload absent, SHONEN end-to-end remains unchecked. L1 admits both bounded rounds only; no promotion."
+    },
+    {
+      "round": 6,
+      "date": "2026-10-11",
+      "type": "closure",
+      "lanes": {
+        "harness-integrity": "in-flight"
+      },
+      "promotions": [],
+      "minted": [],
+      "notes": "Promoted harness r6 candidate work fdb8b51/report 5600e6b: copied rank-correct wrong roster province/axes/spec now rejected; retained fifth mint 5/5 and live 4/4. Depth improved/calibration unchanged proposed pending non-author independent review."
+    },
+    {
+      "round": 5,
+      "date": "2026-10-11",
+      "type": "closure",
+      "lanes": {
+        "rlm-dispatch": "in-flight"
+      },
+      "promotions": [],
+      "minted": [],
+      "notes": "Promoted dispatch r5 candidate work bfb7c55/report 1eedd3e: synthetic late forbidden switch baseline pass \u2192 reject; seven fixtures 0/1/0/1/1/0/1. Calibration improved/operability unchanged proposed pending non-author review; no live provider or depletion claim."
     }
   ]
 }
