@@ -237,6 +237,18 @@
       "promotions": [],
       "minted": [],
       "notes": "Same non-author review at 92a8dba reran seven fixture exits 0/1/0/1/1/0/1 and pre-r5 verifier false PASS late selector switch, now FAIL. L1 admits calibration improved/operability unchanged, synthetic-only; no provider authentication or OpenAI usage depletion claim."
+    },
+    {
+      "round": 5,
+      "date": "2026-10-11",
+      "type": "closure",
+      "lanes": {
+        "gate-evidence": "in-flight",
+        "skill-discovery": "in-flight"
+      },
+      "promotions": [],
+      "minted": [],
+      "notes": "Gate R5 candidate corpus bb0d003 judgment 7622b8a report 7230a19: child goal.get() twice returned null, proving child goal read cannot assess parent; five-row boundary table check exit0. Coverage improved/calibration unchanged proposed; no parent goal/autonomous receipt, SHONEN end-to-end unchecked. Skill R5 candidate work dce58a3/report d230eba: safe daemon reload declined; private before/after fresh CLI inventory probe exit0; freshness/operability unchanged, SHONEN end-to-end unchecked. Independent review pending; no promotion."
     }
   ]
 }
