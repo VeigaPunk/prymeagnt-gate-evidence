@@ -169,6 +169,18 @@
       ],
       "minted": [],
       "notes": "Supersedes R4 in-flight status: named non-author growth-and-dispatch-review at 291ecd3 independently reran 5 sanitized fixture exits 0/1/0/1/1; old verifier accepted mixed-child, new rejects it; operability improved/calibration unchanged synthetic-only. Admitted verified rounds r2,r3,r4 (r1 remains failed). SHONEN 4/4 checked by named round1/round2 reviewers; r3 and r4 independently verified. L1 authorizes shonen->shokunin narrowly for OpenAI model admission/settlement evidence; no live authentication claim and no UFO L1 authority. Global spec update and live rank audit required."
+    },
+    {
+      "round": 4,
+      "date": "2026-10-11",
+      "type": "closure",
+      "lanes": {
+        "gate-evidence": "in-flight",
+        "skill-discovery": "in-flight"
+      },
+      "promotions": [],
+      "minted": [],
+      "notes": "Gate candidate bc1bb3c/bd2b748: real pinned Git whitespace gate exit0 vs independent stdin whitespace negative exit3; calibration improved/coverage unchanged proposed, not mission gate, SHONEN end-to-end still unchecked pending non-author. Skill candidate 5404e05/e67e4c8: isolated private install/frontmatter/fresh process inventory exit0; operability improved/freshness unchanged proposed; no daemon reload, SHONEN end-to-end unchecked. Both candidates independently rerun by L1 at integration before non-author review; no promotion."
     }
   ]
 }
