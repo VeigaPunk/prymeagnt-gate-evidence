@@ -215,6 +215,28 @@
       "promotions": [],
       "minted": [],
       "notes": "Promoted dispatch r5 candidate work bfb7c55/report 1eedd3e: synthetic late forbidden switch baseline pass \u2192 reject; seven fixtures 0/1/0/1/1/0/1. Calibration improved/operability unchanged proposed pending non-author review; no live provider or depletion claim."
+    },
+    {
+      "round": 6,
+      "date": "2026-10-11",
+      "type": "closure-correction",
+      "lanes": {
+        "harness-integrity": "ok"
+      },
+      "promotions": [],
+      "minted": [],
+      "notes": "Named non-author roster-and-selector-review at 92a8dba independently proved baseline all three rank-correct wrong roster pointers accepted 4/4, now each rejected 3/4; fifth minted 5/5 and live 4/4 preserved. L1 admits depth improved/calibration unchanged, copied-state only; no real drift claim."
+    },
+    {
+      "round": 5,
+      "date": "2026-10-11",
+      "type": "closure-correction",
+      "lanes": {
+        "rlm-dispatch": "ok"
+      },
+      "promotions": [],
+      "minted": [],
+      "notes": "Same non-author review at 92a8dba reran seven fixture exits 0/1/0/1/1/0/1 and pre-r5 verifier false PASS late selector switch, now FAIL. L1 admits calibration improved/operability unchanged, synthetic-only; no provider authentication or OpenAI usage depletion claim."
     }
   ]
 }

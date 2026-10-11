@@ -52,3 +52,6 @@
 - Falsifiable measure: before change, baseline verifier accepted `late-forbidden-switch` (PASS, exit 0) because only the first route was checked; current verifier rejects it with `session provider/model mismatch` (exit 1). Current seven fixture outcomes: 0/1/0/1/1/0/1 in README order.
 - Calibration: improved for recorded selector consistency (a route-change counterfeit that previously passed is rejected); this remains synthetic test evidence only, not authenticated live provenance or evidence of provider authentication/model usage depletion. Operability: unchanged (same verifier workflow and existing checks).
 - No network calls or mutation of receipt inputs; no global harness edits, push, or source changes.
+
+## Independent review and L1 judgment
+- Named non-author roster-and-selector-review at 92a8dba reran seven fixture exits 0/1/0/1/1/0/1; old verifier accepted later forbidden selector (exit0), new rejects (exit1). L1 admits R5 calibration improved/operability unchanged. This is synthetic verifier behavior, not live provider authentication or documented OpenAI usage depletion.
