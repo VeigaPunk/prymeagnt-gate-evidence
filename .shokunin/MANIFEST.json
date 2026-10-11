@@ -372,6 +372,18 @@
       "promotions": [],
       "minted": [],
       "notes": "Same non-author reviewer reran eight synthetic fixture outcomes 0/1/0/1/1/0/1/1; old verifier false PASS same-ID swapped path, updated checks observed registry sessionFile. L1 admits R7 operability improved/calibration unchanged; no authenticated provider or runtime proof; actual absolute path portability limited."
+    },
+    {
+      "round": "direction-r1",
+      "date": "2026-10-11",
+      "type": "branch-direction-closure",
+      "lanes": {
+        "art-east-asian-design": "ok-research-only",
+        "games-engine-mechanics": "ok-research-only"
+      },
+      "promotions": [],
+      "minted": [],
+      "notes": "Non-author art-source-review directly refetched CMA object/API/policy HTTP200; one accession 1980.186 verified, depth 0\u21921/3 provisional, calibration unchanged with explicit image reuse vs no explicit AI training permission and provenance uncertainty. Branch craft/art-east-asian-design pushed to 4a7edbc. Non-author games-engine-review found literal relative --script broken; worker corrected, godot-repro-correction-review reran corrected bounded headless Godot 4.7.2 positive exit0/one-shot pickup and negative exit1/quit, no leftover, operability improved narrowly/calibration unchanged. Original assert(false) hung ~23m and parent terminated only PID33376; not a clean negative. Branch craft/games-engine-mechanics pushed to e7e749b. Both are research directions ONLY, not minted or promoted specialists, no global triple, not full scene/editor/input loop."
     }
   ]
 }
