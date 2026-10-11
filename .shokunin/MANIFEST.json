@@ -1,0 +1,19 @@
+{
+  "schema": "prime-agent-shokunin-v1",
+  "roster": {},
+  "rounds": [
+    {
+      "round": 0,
+      "date": "2026-10-11",
+      "type": "mint",
+      "minted": [
+        "harness-integrity",
+        "rlm-dispatch",
+        "gate-evidence",
+        "skill-discovery"
+      ],
+      "promotions": [],
+      "notes": "Explicit operator directive; mint evidence .shokunin/mints/<id>.md; probation, zero verified rounds; four OpenAI read-only scout spawns: harness-state and goal-gates via openai-codex/gpt-6-sol, dispatch and skill-contract via openai-codex/gpt-6-luna. No roster entry pending promotion."
+    }
+  ]
+}
