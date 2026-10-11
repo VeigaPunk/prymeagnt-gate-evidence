@@ -14,6 +14,20 @@
       ],
       "promotions": [],
       "notes": "Explicit operator directive; mint evidence .shokunin/mints/<id>.md; probation, zero verified rounds; four OpenAI read-only scout spawns: harness-state and goal-gates via openai-codex/gpt-6-sol, dispatch and skill-contract via openai-codex/gpt-6-luna. No roster entry pending promotion."
+    },
+    {
+      "round": 1,
+      "date": "2026-10-11",
+      "type": "closure",
+      "lanes": {
+        "harness-integrity": "ok",
+        "gate-evidence": "ok",
+        "skill-discovery": "ok",
+        "rlm-dispatch": "failed"
+      },
+      "promotions": [],
+      "minted": [],
+      "notes": "L1 closure after isolated OpenAI spawns: harness-integrity(sol) work c1ee05b report 6e0a803, depth improved/calibration unchanged; gate-evidence(sol) work d9c1793 report 79bcf89, coverage improved/calibration unchanged; skill-discovery(luna) work 7488c6c report 1487c2d, operability improved/freshness unchanged. rlm-dispatch(luna) work f122105 report 61814c5: operability unprovable-but-better/calibration unchanged; prior receipt count 1->1, no admission; corrected in its LOG. Checks: read-only live harness triple 4/4, documented table rows 5 and checklist checkpoints 4; no live gate run or non-author SHONEN check. Reports cite existing commits."
     }
   ]
 }
