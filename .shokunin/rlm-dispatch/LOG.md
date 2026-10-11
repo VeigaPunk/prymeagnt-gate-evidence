@@ -55,3 +55,6 @@
 
 ## Independent review and L1 judgment
 - Named non-author roster-and-selector-review at 92a8dba reran seven fixture exits 0/1/0/1/1/0/1; old verifier accepted later forbidden selector (exit0), new rejects (exit1). L1 admits R5 calibration improved/operability unchanged. This is synthetic verifier behavior, not live provider authentication or documented OpenAI usage depletion.
+
+## R6 independent review and L1 judgment
+- Named non-author preflight-and-noaxis-review at a30472f reran seven synthetic fixture exits 0/1/0/1/1/0/1, inspected installed RLM collect `answer_preview: str|None` with no documented truncation or equality guarantee. L1 records R6 operability/calibration unchanged, no admitted axis move or speculative verifier change; no usage depletion evidence.

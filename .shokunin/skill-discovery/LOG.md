@@ -50,3 +50,6 @@
 
 ## R5 independent review and L1 judgment
 - Named non-author goal-boundary-and-freshness-review at bff8d3d reran private fresh-process inventory before/after with distinct CLI PIDs and scratch cleanup. It confirms only fresh process discovery, not live daemon reload. L1 records R5 freshness unchanged/operability unchanged: NO admitted axis advancement and no promotion; SHONEN end-to-end remains unchecked.
+
+## R6 independent review and L1 judgment
+- Named non-author preflight-and-noaxis-review at a30472f tested daemon path/env preflight: fake distinct paths pass; same socket, overlapping store, inherited PRIME_AGENT_INTERNAL_* each refuse. No daemon/session/reload launched; L1 records R6 freshness/operability unchanged and SHONEN end-to-end unchecked; preflight is not authorization to launch.
