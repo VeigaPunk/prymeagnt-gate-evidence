@@ -319,6 +319,15 @@
       "promotions": [],
       "minted": [],
       "notes": "Named non-author preflight-and-noaxis-review at a30472f reproduced dispatch seven synthetic fixture exits 0/1/0/1/1/0/1 and verified collect optional preview has no documented truncation/equality guarantee; L1 keeps both axes unchanged, no verifier change. Same reviewer reran skill R6 path/env guard four fake fixtures distinct pass, socket/store/internal overlap refuse; no daemon launched. L1 keeps freshness/operability unchanged, SHONEN end-to-end unchecked. No promotion/depletion claim."
+    },
+    {
+      "round": "mission-contract-14h",
+      "date": "2026-10-11",
+      "type": "operator-correction",
+      "lanes": {},
+      "promotions": [],
+      "minted": [],
+      "notes": "Operator changed mission duration from 10h to 14h from original 2026-10-11T22:14:30.216885+00:00: stop at 2026-10-12T12:14:30.216885+00:00 or documented OpenAI Codex limit depletion, whichever first. Supersedes goal objective older 08:14:30 text; host goal API has no update and remains active. No early goal.complete. Only OpenAI Codex Sol/Luna spawns."
     }
   ]
 }
