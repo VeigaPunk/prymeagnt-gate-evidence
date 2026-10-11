@@ -56,6 +56,20 @@
       "promotions": [],
       "minted": [],
       "notes": "L1 provisional closure after native checks: harness-integrity ecb3307/c20806d calibration improved/depth unchanged (two negative mutation controls fail, two positive 4/4 pass); rlm-dispatch d00cf1b/e1f5c8f operability improved/calibration unchanged (fixture verifier good exit0, wrong/unsettled exit1; no new live receipt); gate-evidence 8bbcd4a/f6bb1ce/e393c00 coverage improved/calibration unchanged (two extra synthetic retry/goal fixtures, 2/2; live stop unclassified); skill-discovery d0e5c46/995a162 operability improved/freshness unchanged (L1 isolated fixture positive exit0 and missing/drifted winner exit1; no live install/reload). Reports cite committed hashes, lane authorship scoped. Round-3 independent non-author reviewer pending. L0 questions appended without in-scope lane writes; promotions blocked pending review."
+    },
+    {
+      "round": 3,
+      "date": "2026-10-11",
+      "type": "closure-correction",
+      "lanes": {
+        "harness-integrity": "ok",
+        "rlm-dispatch": "ok",
+        "gate-evidence": "ok",
+        "skill-discovery": "ok"
+      },
+      "promotions": [],
+      "minted": [],
+      "notes": "Supersedes only round-3 closure note saying independent review pending; named non-author round3-promotion-review at c8129fd reran native controls: harness 2/2 negatives + 2/2 positives and live audit 4/4; RLM synthetic verifier positive and wrong/unsettled negatives; gate legacy 7/7 + new 2/2 synthetic fixtures; skill isolated winner fixture positive, missing/drifted/winner-mismatch negative. Round-3 moves independently verified. Harness 3/3 + 4/4 SHONEN but hard-coded shonen rank blocks promotion pending transition fix. RLM has only 2/3 admitted rounds. Gate and skill each retain unchecked end-to-end SHONEN box. No promotions authorized now."
     }
   ]
 }
