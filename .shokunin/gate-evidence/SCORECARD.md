@@ -34,3 +34,7 @@ Calibration improved narrowly: duplicate JSON object keys at top-level and neste
 ## Round 19 — proposed (synthetic native contract)
 - **Calibration:** improved narrowly. The parent-snapshot parser now enforces the documented `token_budget` positive-integer-or-null type. Contract evidence: integer `100` and null accepted; fractional `100.5`/`100.0`, booleans, zero, and negative values rejected before Git with exit 2 and no JSON; fractional `tokens_used` and `time_used_seconds` controls accepted. Existing contract, fixtures, compile, and whitespace checks pass.
 - **Coverage:** unchanged; no decision categories added. Synthetic supplied projection, not authenticated host telemetry. No autonomous acceptance, mission-goal success, or stop claim.
+
+
+## Round 20 — no-axis-advance (live session)
+Coverage unchanged; calibration unchanged. Diagnostic work `82e05ae` captures local Git gate exit 0 and null `goal.get()` projection comparison exit 0. Independent `gate-r20-independent-review` replayed both but found no host autonomous completion-gate execution or active goal. SHONEN box 2 remains unchecked. Numeric scores still unassigned.
