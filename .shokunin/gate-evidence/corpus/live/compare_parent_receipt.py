@@ -22,6 +22,10 @@ def parse_status(raw):
     timestamp = data["observed_utc"]
     if not isinstance(timestamp, str) or len(timestamp) > 40:
         raise ValueError("invalid UTC timestamp")
+    # datetime.fromisoformat stores at most microseconds; reject rather than
+    # silently changing a caller-supplied timestamp with finer precision.
+    if re.search(r"\.\d{7,}(?=(?:Z|[+-]\d{2}:?\d{2})$)", timestamp):
+        raise ValueError("UTC timestamp precision exceeds microseconds")
     try:
         clock = datetime.fromisoformat(timestamp.replace("Z", "+00:00"))
     except ValueError as exc:
@@ -30,7 +34,7 @@ def parse_status(raw):
         raise ValueError("clock must be UTC")
     goal = data["goal"]
     if goal is None:
-        return {"observed_utc": clock.isoformat(), "goal_present": False, "status": None,
+        return {"observed_utc": timestamp, "goal_present": False, "status": None,
                 "tokens_used": None, "time_used_seconds": None, "token_budget": None}
     if not isinstance(goal, dict) or set(goal) != {"status", "tokens_used", "time_used_seconds", "token_budget"}:
         raise ValueError("goal must contain exactly status and three clock fields")
@@ -41,7 +45,7 @@ def parse_status(raw):
         value = goal[key]
         if value is not None and (type(value) not in (int, float) or value < 0 or value == float("inf") or value != value):
             raise ValueError("invalid clock field")
-    return {"observed_utc": clock.isoformat(), "goal_present": True, **goal}
+    return {"observed_utc": timestamp, "goal_present": True, **goal}
 
 
 def git(*args):

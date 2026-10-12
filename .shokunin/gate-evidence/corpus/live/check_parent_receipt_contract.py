@@ -30,6 +30,17 @@ def main():
                ("autonomous_gate", "acceptance", "loop_stop", "mission_goal"))
     assert result["status_provenance"].startswith("parent-supplied")
     assert result["goal_complete_called"] is False
+    precise = {**synthetic, "observed_utc": "2026-10-11T00:00:00.123456789Z"}
+    truncated_old_behavior = __import__("datetime").datetime.fromisoformat(
+        precise["observed_utc"].replace("Z", "+00:00")).isoformat()
+    assert truncated_old_behavior == "2026-10-11T00:00:00.123456+00:00"
+    rejected_precision = run(precise)
+    assert rejected_precision.returncode == 2 and not rejected_precision.stdout
+    assert "DO-NOT-STORE" not in rejected_precision.stderr
+    exact_microseconds = {**synthetic, "observed_utc": "2026-10-11T00:00:00.123456Z"}
+    exact = run(exact_microseconds)
+    assert exact.returncode == 0
+    assert json.loads(exact.stdout)["goal_snapshot"]["observed_utc"] == exact_microseconds["observed_utc"]
     null = run({"observed_utc": "2026-10-11T00:00:00Z", "goal": None})
     assert null.returncode == 0 and json.loads(null.stdout)["goal_snapshot"]["goal_present"] is False
     negative = subprocess.run(["git", "diff", "--no-index", "--check", "/dev/null", "/dev/stdin"],
