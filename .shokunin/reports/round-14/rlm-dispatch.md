@@ -17,3 +17,7 @@ Regression controls (baseline/current exits): original nine `0/1/0/1/1/0/1/1/1`;
 
 ## Limits
 Synthetic local inputs only. No provider, daemon, authentication, or live runtime operation was invoked. No claim about filesystem I/O errors, which remain uncaught, or behavior for encodings other than invalid UTF-8.
+
+
+## Fixture portability correction (after integration smoke)
+The initial R14 fixture copy stored absolute `sessionFile` paths from the isolated worktree. Integration smoke found that three paths were non-portable after replay. Corrected `utf8-session-only`, `utf8-settlement-only`, and `utf8-unique-positive` registries to use repository-root-relative `.shokunin/rlm-dispatch/corpus/verification/fixtures/.../session.jsonl` paths, consistent with the verifier's documented invocation from the repository root. This supersedes any prior implication that all fixture copies were portable as committed. Re-ran all four R14 fixture commands from the isolated repository root: the three malformed inputs return generic FAIL/exit 1, and the unique positive passes/exit 0. The path adjustment changes no verifier behavior or verdict; no integration merge/push was performed.
