@@ -15,10 +15,15 @@ func _process(_delta: float) -> bool:
     return false
 
 func _run() -> void:
+    var receiver_script = load("res://controls/input_route_receiver.gd")
+    if receiver_script == null:
+        return _fail("receiver script failed to load")
     receiver = Node.new()
-    receiver.set_script(load("res://input_route_receiver.gd"))
+    receiver.set_script(receiver_script)
     receiver.set("route_owner", self)
     receiver.process_mode = Node.PROCESS_MODE_DISABLED
+    if receiver.get_script() != receiver_script or receiver.get("route_owner") != self:
+        return _fail("receiver setup failed")
     root.add_child(receiver)
     await process_frame
     var event := InputEventKey.new()
@@ -31,7 +36,7 @@ func _run() -> void:
         await process_frame
     if received != 0:
         return _fail("control did not discriminate; receipt_count=" + str(received))
-    print("PASS negative_route=disabled_node receipt_count=0 frames=%d" % frames)
+    print("PASS negative_route=disabled_node receipt_count=0 frames=%d expected_exit=1 (intentional negative-control status)" % frames)
     quit(1)
 
 func _fail(message: String) -> void:

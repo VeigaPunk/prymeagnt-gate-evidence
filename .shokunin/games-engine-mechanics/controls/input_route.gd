@@ -15,9 +15,14 @@ func _process(_delta: float) -> bool:
     return false
 
 func _run() -> void:
+    var receiver_script = load("res://controls/input_route_receiver.gd")
+    if receiver_script == null:
+        return _fail("receiver script failed to load")
     receiver = Node.new()
-    receiver.set_script(load("res://input_route_receiver.gd"))
+    receiver.set_script(receiver_script)
     receiver.set("route_owner", self)
+    if receiver.get_script() != receiver_script or receiver.get("route_owner") != self:
+        return _fail("receiver setup failed")
     root.add_child(receiver)
     await process_frame
     var event := InputEventKey.new()
