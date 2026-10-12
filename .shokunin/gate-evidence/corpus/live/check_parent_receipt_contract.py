@@ -34,6 +34,22 @@ def main():
                ("autonomous_gate", "acceptance", "loop_stop", "mission_goal"))
     assert result["status_provenance"].startswith("parent-supplied")
     assert result["goal_complete_called"] is False
+    for valid_budget in (100, None):
+        projection = {**synthetic, "goal": {**synthetic["goal"], "token_budget": valid_budget}}
+        accepted_budget = run(projection)
+        assert accepted_budget.returncode == 0, (valid_budget, accepted_budget.stderr)
+        assert json.loads(accepted_budget.stdout)["goal_snapshot"]["token_budget"] == valid_budget
+    for invalid_budget in (100.5, 100.0, True, False, 0, -0, -1, -0.5):
+        projection = {**synthetic, "goal": {**synthetic["goal"], "token_budget": invalid_budget}}
+        rejected_budget = run(projection)
+        assert rejected_budget.returncode == 2 and not rejected_budget.stdout, (invalid_budget, rejected_budget.stderr)
+        assert "invalid redacted status; no gate run" in rejected_budget.stderr
+    # Shared clock fields retain their existing nonnegative int/float contract.
+    for field, accepted_value in (("tokens_used", 8.5), ("time_used_seconds", 1.5)):
+        projection = {**synthetic, "goal": {**synthetic["goal"], field: accepted_value}}
+        accepted_clock = run(projection)
+        assert accepted_clock.returncode == 0, (field, accepted_clock.stderr)
+        assert json.loads(accepted_clock.stdout)["goal_snapshot"][field] == accepted_value
     # Exercise every lifecycle state documented by the goal skill, plus
     # unknown labels that the former lexical-only check accepted.
     for lifecycle_status in ("active", "paused", "budget-limited", "completed", "errored"):

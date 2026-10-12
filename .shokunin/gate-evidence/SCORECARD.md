@@ -29,3 +29,8 @@ Correction to R13 report counts: accepted fractional widths actually tested are 
 
 ## Round 14 (proposed; synthetic)
 Calibration improved narrowly: duplicate JSON object keys at top-level and nested object depth now reject before the read-only Git gate. Coverage unchanged; no policy branch added. Native duplicate negatives and unique control passed. No host autonomous acceptance/stop claim. Details: `.shokunin/reports/round-14/gate-evidence.md`.
+
+
+## Round 19 — proposed (synthetic native contract)
+- **Calibration:** improved narrowly. The parent-snapshot parser now enforces the documented `token_budget` positive-integer-or-null type. Contract evidence: integer `100` and null accepted; fractional `100.5`/`100.0`, booleans, zero, and negative values rejected before Git with exit 2 and no JSON; fractional `tokens_used` and `time_used_seconds` controls accepted. Existing contract, fixtures, compile, and whitespace checks pass.
+- **Coverage:** unchanged; no decision categories added. Synthetic supplied projection, not authenticated host telemetry. No autonomous acceptance, mission-goal success, or stop claim.

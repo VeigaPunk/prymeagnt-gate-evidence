@@ -67,10 +67,13 @@ def parse_status(raw):
     # labels must not be presented as recognized host states.
     if status not in {"active", "paused", "budget-limited", "completed", "errored"}:
         raise ValueError("invalid status")
-    for key in ("tokens_used", "time_used_seconds", "token_budget"):
+    for key in ("tokens_used", "time_used_seconds"):
         value = goal[key]
         if value is not None and (type(value) not in (int, float) or value < 0 or value == float("inf") or value != value):
             raise ValueError("invalid clock field")
+    token_budget = goal["token_budget"]
+    if token_budget is not None and (type(token_budget) is not int or token_budget <= 0):
+        raise ValueError("invalid token budget")
     return {"observed_utc": timestamp, "goal_present": True, **goal}
 
 
