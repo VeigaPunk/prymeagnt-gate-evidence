@@ -71,3 +71,10 @@
 
 ## Correction — closure commit pointers (2026-10-12)
 This entry corrects only closure-hash pointers in “L1 closure — rounds 7–10” above; it does not alter the round verdicts, report/work pointers, or named reviewer claims. Superseded pointers: R7 `91831c0` → `2bef169`; R8 `d53d29b` → `b91df28`; R9 `91831c0` → `91831c0` (confirmed; unchanged); R10 `c60cd8f` → `c60cd8f` (confirmed; unchanged). Correct closure pointers are therefore R7 `2bef169`, R8 `b91df28`, R9 `91831c0`, and R10 `c60cd8f`.
+
+
+## Round 11 — RFC3339 timestamp syntax (2026-10-12)
+- Baseline at `4df340d50a52c36dafa5872487f6e4562ff3cbce` used `datetime.fromisoformat` after handling `Z`; its parser accepted space separator, basic `+0000`, and short `+00` offsets as UTC. `corpus/fixtures/r11-syntax-cases.json` records these three synthetic false accepts, each confirmed through the baseline parser conversion.
+- Candidate requires RFC3339 lexical form (`T`, colonized `±HH:MM` or `Z`, optional 1–6 fractional digits) before semantic datetime validation. Synthetic native-process contract checker rejects all three; preserves positive `Z`/`+00:00`, exact microseconds, existing unknown `-00:00` and >6 fraction rejection, and non-UTC rejection. Leap seconds remain a separate false reject/limitation: Python `datetime` rejects second 60; this does not claim full RFC3339 compliance.
+- `python3 .shokunin/gate-evidence/corpus/live/check_parent_receipt_contract.py` passed: native subprocess positives execute pinned local Git diff gate, syntax negatives return 2 without receipt, whitespace negative control fails as expected. `git diff --check` passed. No host autonomous proof or mission-goal inference.
+- **Calibration proposed improved narrowly**: parser now rejects three concrete false accepts while preserving observed intended controls. **Coverage proposed unchanged**: only syntax conformance of an existing timestamp field, no policy branch / gate category added.

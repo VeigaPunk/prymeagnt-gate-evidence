@@ -62,7 +62,15 @@ def main():
     assert poison not in rejected.stderr
     malformed = run({"observed_utc": "2026-10-11T00:00:00+01:00", "goal": None})
     assert malformed.returncode == 2 and not malformed.stdout
-    print("synthetic parent projection: positive and null parsed; real read-only Git gate exit 0;"
+    # These are accepted by datetime.fromisoformat, but not the RFC3339
+    # separator/offset grammar required by the projection contract.
+    for nonconforming in ("2026-10-11 00:00:00Z", "2026-10-11T00:00:00+0000",
+                          "2026-10-11T00:00:00+00"):
+        assert __import__("datetime").datetime.fromisoformat(
+            nonconforming.replace("Z", "+00:00"))
+        rejected_syntax = run({**synthetic, "observed_utc": nonconforming})
+        assert rejected_syntax.returncode == 2 and not rejected_syntax.stdout, nonconforming
+    print("synthetic parent projection: positive and null parsed; strict RFC3339 UTC syntax rejects space/+0000/+00; real read-only Git gate exit 0;"
           " stdin whitespace negative control failed as expected;"
           " objective/secret injection and non-UTC timestamp rejected without receipt")
 
