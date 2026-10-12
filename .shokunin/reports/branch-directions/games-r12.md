@@ -72,3 +72,10 @@ All exit-1 controls are designed negative cases; exit 2 on the baseline is the d
 ## Git evidence
 
 Required Git author and committer: `games-engine-mechanics-research <games-engine-mechanics-research@shokunin.local>`. Implementation/fixture commit precedes this report-only commit. Hashes recorded after commit.
+
+
+## Append-only correction — baseline comparison semantics
+
+The preceding baseline description overstates the comparison. `--baseline-release-test` dispatches E press and release, but the press-only `baseline_actor.gd` has no release counter, so the harness does **not** observe or assert a baseline release receipt. It snapshots the move count after dispatching release, waits 10 physics frames, and expects movement to have continued; continuation then emits `ERROR: movement continued after release; expected baseline failure` and exits 2. If movement had stopped unexpectedly, the alternate branch would also exit 2, with distinct stderr `baseline unexpectedly stopped after release`. Therefore exit status alone does not distinguish these baseline outcomes; the captured stderr is required. The observed baseline run had the continuation diagnostic above. This is a press-only behavior comparison after release dispatch, not proof of an observed baseline release callback nor an identical release-receipt assertion.
+
+The positive release run reported `held_moves=3`, but this value is timing-dependent: the test checks `held_moves >= 3`, so it may vary across runs. The assertion is that movement continues while held and the count does not increase in the 10 physics frames after the new actor observes release and clears intent. There is no LOG file in the R12 research subtree to correct.
