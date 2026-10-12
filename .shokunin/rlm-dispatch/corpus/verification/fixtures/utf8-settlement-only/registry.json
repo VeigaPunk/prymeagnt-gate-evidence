@@ -1,1 +1,1 @@
-{"childId": "sub-fixture-a", "model": {"provider": "openai-codex", "modelId": "gpt-6-luna"}, "status": "completed", "sessionFile": "/home/vgpnk/Projects/prymeagnt-dispatch-r14-utf8/.shokunin/rlm-dispatch/corpus/verification/fixtures/utf8-settlement-only/sub-fixture-a/session.jsonl", "type": "rlm_subagent"}
+{"childId": "sub-fixture-a", "model": {"provider": "openai-codex", "modelId": "gpt-6-luna"}, "status": "completed", "sessionFile": ".shokunin/rlm-dispatch/corpus/verification/fixtures/utf8-settlement-only/sub-fixture-a/session.jsonl", "type": "rlm_subagent"}
