@@ -25,3 +25,7 @@ Calibration evidence: `corpus/fixtures/r11-syntax-cases.json` gives 3 baseline `
 
 ## Round 13 precision-boundary correction (2026-10-12)
 Correction to R13 report counts: accepted fractional widths actually tested are 7 and 19 digits with `Z`, plus 14 digits with `+00:00`; a 20-digit `Z` timestamp (41 chars total) is rejected by the retained 40-character whole-timestamp cap. Arbitrary fraction precision applies only within that cap. Added boundary checker passed (exit 0), work commit `ae613ad428375ad4b81dd963f3718e329c6a934f`. Coverage improved; calibration unchanged remains the proposed round judgment, with no leap-second completeness or host gate proof. See R13 report correction.
+
+
+## Round 14 (proposed; synthetic)
+Calibration improved narrowly: duplicate JSON object keys at top-level and nested object depth now reject before the read-only Git gate. Coverage unchanged; no policy branch added. Native duplicate negatives and unique control passed. No host autonomous acceptance/stop claim. Details: `.shokunin/reports/round-14/gate-evidence.md`.
