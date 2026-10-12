@@ -74,3 +74,7 @@
 - No material counterexample found: a symlink alias resolving to the same session file identifies the same underlying file, while distinct files resolve differently; registry value is not an authentication anchor by itself. This check cannot establish authenticity, and no such claim is made.
 - Baseline verifier at `984a3a6` and current verifier returned the same eight fixture outcomes in README order: 0/1/0/1/1/0/1/1. Thus existing false-positive/false-negative controls neither improved nor regressed. Synthetic-only; no runtime or usage-depletion inference.
 - Operability: unchanged. Calibration: unchanged; no axis advance. Preserve verifier code and prior fixtures. Evidence/report: `.shokunin/reports/round-8/rlm-dispatch.md`.
+
+## L1 closure — 2026-10-12
+- Independent review pointers: `promotion-and-session-review` at `984a3a6` reviewed R7; `R8/R7 independent review` at `80b6ce4` (MANIFEST-only closure commit) records R8 no-axis review.
+- L1 admits R7 operability improved, calibration unchanged. R8 is unchanged on both axes; no axis advance. These judgments concern synthetic verifier checks only; they provide no live provider authentication or usage/depletion proof.

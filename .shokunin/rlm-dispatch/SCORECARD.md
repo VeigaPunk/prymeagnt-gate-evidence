@@ -9,3 +9,8 @@ Owned axes: operability, calibration. Scores are not assigned without a measured
 
 planned: no axis advance proposed in round 8; preserve the verifier absent a concrete counterexample. L1 judges all owned axes.
 retired: none.
+
+## L1 closure appendix — 2026-10-12
+- R7: admitted — operability improved; calibration unchanged (independent review: `promotion-and-session-review`, `984a3a6`).
+- R8: unchanged — operability unchanged; calibration unchanged; no axis advance (independent review: `R8/R7 independent review`, `80b6ce4`).
+- No scalar score assigned. Synthetic verifier evidence only; no live provider authentication or usage/depletion proof.
