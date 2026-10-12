@@ -88,3 +88,8 @@
 - Updated the eight existing synthetic registry fixtures to include `type`; changed linked-good to explicit wrong type as the negative regression. Existing expected exits remain 0/1/0/1/1/0/1/1. Baseline at `f7c1410` passes the wrong-type fixture (0); current rejects it (1).
 - Corpus basis: recorded round-2 registry documented in `corpus/knowledge/2026-10-11-round2-admission.md`, plus native event at `verification/smoke-test-rerun-20261011.log:231` and assignment-provided census 175/175. No private child/session identifiers copied. Synthetic fixture updates reflect schema only; they are not new live provider authentication or runtime evidence.
 - Operability: improved (wrong discriminator formerly passed and now fails; commands are documented). Calibration: improved (enforces exact observed native discriminator, rejects missing and wrong values rather than treating absent schema as compatible). Synthetic verifier evidence only.
+
+
+## Round 9 correction (supersedes initial fixture counts and axis proposal)
+- Restore the original `linked-good` positive control to `type: rlm_subagent`; its earlier conversion to wrong-type had sacrificed an existing regression control. Added an isolated ninth `wrong-type` fixture instead. Baseline eight expected outcomes remain `0/1/0/1/1/0/1/1`; ninth is baseline PASS/current reject.
+- Corrected verdict: operability **unchanged** (all eight existing controls preserved; no net change in their outcomes); calibration **improved** (native discriminator requirement demonstrated by separate ninth false-PASS regression). This supersedes the initial eight-case `0/1/1/1/1/0/1/1` claim and two-axis proposal above.

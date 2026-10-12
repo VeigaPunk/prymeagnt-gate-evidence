@@ -6,5 +6,5 @@
   },
   "status": "completed",
   "sessionFile": ".shokunin/rlm-dispatch/corpus/verification/fixtures/linked-good/sub-fixture-a/session.jsonl",
-  "type": "not_rlm_subagent"
+  "type": "rlm_subagent"
 }
