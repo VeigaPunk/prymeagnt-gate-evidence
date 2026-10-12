@@ -9,3 +9,8 @@ Owned axes: operability, freshness. Scores are not assigned without a measured c
 
 planned: none; safe isolated daemon lifecycle/API unavailable; reload remains unverified and SHONEN box 2 unchecked.
 retired: none.
+
+
+## L1 appendix — R7 closure (2026-10-12T02:01:56Z)
+
+Supersedes the proposed L1-requested wording above for round 7 only. Independent reviewer `skill-r7-review` at `80b6ce4` admits **operability improved; freshness unchanged**. Operability evidence is the root-store (`/`) preflight false-pass correction, independently reviewed; it does not establish daemon isolation. Freshness has no new evidence. No daemon/session/reload was run; the end-to-end SHONEN claim remains unmade and box 2 remains unchecked.
