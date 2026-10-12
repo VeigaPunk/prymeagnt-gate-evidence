@@ -67,3 +67,7 @@
 - R9 `.shokunin/reports/round-9/gate-evidence.md` (work `442927e`, report `ade48d7`, report-last path `a7dc21e`); independent reviewer `gate-r9-review`, closure `91831c0`. L1 accepts calibration improved narrowly, coverage unchanged.
 - R10 `.shokunin/reports/round-10/gate-evidence.md` (work `e5642da`, report `4aa930b`); independent reviewer `gate-r10-review`, closure `c60cd8f`. L1 accepts calibration improved narrowly, coverage unchanged.
 - These bounded improvements concern projection comparator inputs and local Git checks only. No host autonomous-gate, acceptance, mission-goal success, or loop-stop proof was produced; SHONEN end-to-end remains unchecked. No promotion.
+
+
+## Correction — closure commit pointers (2026-10-12)
+This entry corrects only closure-hash pointers in “L1 closure — rounds 7–10” above; it does not alter the round verdicts, report/work pointers, or named reviewer claims. Superseded pointers: R7 `91831c0` → `2bef169`; R8 `d53d29b` → `b91df28`; R9 `91831c0` → `91831c0` (confirmed; unchanged); R10 `c60cd8f` → `c60cd8f` (confirmed; unchanged). Correct closure pointers are therefore R7 `2bef169`, R8 `b91df28`, R9 `91831c0`, and R10 `c60cd8f`.

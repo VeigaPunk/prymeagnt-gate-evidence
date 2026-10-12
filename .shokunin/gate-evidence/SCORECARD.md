@@ -13,3 +13,7 @@ retired: none.
 
 ## L1 closure correction — 2026-10-12
 Supersedes the stale planned statement above that an actual status/UTC projection remained optional or unsupplied, and that independent review was still pending. R7 did record a parent-supplied projection and received named independent review (`gate-r7-review`; `.shokunin/reports/round-7/gate-evidence.md`; closure pointer `91831c0`). R8 had no axis advance (`gate-r8-review`, `b860fd9`, closure `d53d29b`). R9 precision fix calibration improved narrowly after `gate-r9-review` (work `442927e`, report `ade48d7`, path `a7dc21e`; closure `91831c0`). R10 unknown-offset fix calibration improved narrowly after `gate-r10-review` (work `e5642da`, report `4aa930b`; closure `c60cd8f`). Coverage remains unchanged across R7–R10; numeric scores remain unassigned. These receipts do not prove host autonomous-gate execution, acceptance, mission-goal success, or loop-stop. SHONEN end-to-end box remains unchecked; no promotion. Historical planned text is retained above, not current status.
+
+
+## Correction — closure commit pointers (2026-10-12)
+This append-only correction supersedes the closure-hash references in “L1 closure correction — 2026-10-12” above: R7 pointer `91831c0` was wrong; correct closure is `2bef169`. R8 pointer `d53d29b` was wrong; correct closure is `b91df28`. R9 `91831c0` and R10 `c60cd8f` were correct and remain unchanged. Correct pointers: R7 `2bef169`, R8 `b91df28`, R9 `91831c0`, R10 `c60cd8f`. No verdict or evidence claim changes.
