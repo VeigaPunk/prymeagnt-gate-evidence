@@ -1,0 +1,9 @@
+# Gate-evidence craft round 9 — calibration
+
+- Baseline: `db1f5d091c24c0d152128167b54992c7ae20effd`; code commit: `442927e83c5b1f0a2e50aa9f6860a223087c17a0`.
+- Observed defect: accepted UTC timestamps with nine fractional digits were parsed by `datetime.fromisoformat` and normalized with `isoformat`, silently dropping digits beyond microseconds.
+- Choice: reject fractional timestamp precision greater than six digits. Keep the input spelling unchanged for accepted timestamps (including `Z`), rather than normalizing away representational details. Parser emits only generic rejection, never echoes input.
+- Changes: `compare_parent_receipt.py` rejects excess fractional digits before parsing and records original timestamp spelling in both goal-present/null projections. Added fixture assertions that demonstrate prior nine-digit truncation, require excess precision to be rejected with no receipt, and verify six-digit `Z` timestamp is accepted unchanged.
+- Native fixture checks: `python3 .shokunin/gate-evidence/corpus/live/check_parent_receipt_contract.py` — passed; synthetic valid and null receipts each execute read-only pinned Git diff check (exit 0); stdin whitespace negative control fails as expected; objective/secret and non-UTC rejection retained; excess-precision refusal and microsecond preservation passed. `python3 .shokunin/gate-evidence/corpus/fixtures/check_gate_cases.py` — passed. `python3 .shokunin/gate-evidence/corpus/fixtures/check_autonomous_cases.py` — passed. `git diff --check` — passed.
+- Calibration: **improved**, narrowly: previously accepted over-precision input can no longer be silently altered, while standard timestamps are unchanged in receipt. Coverage: unchanged. This is synthetic input testing and a local read-only Git check, not an authenticated snapshot, autonomous gate, or mission completion.
+- No `goal.complete()`, autonomous-gate claim, global/MANIFEST edit, or push.
