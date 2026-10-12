@@ -38,10 +38,20 @@ installed=0
 for src in "$SOURCE"/*/; do
   [ -d "$src" ] || continue
   [ -f "$src/SKILL.md" ] || continue
+  if [ -L "$src/SKILL.md" ]; then
+    link="$(readlink "$src/SKILL.md")"
+    case "$link" in /*) continue ;; esac
+    source_dir="$(realpath -e -- "$src")"
+    link_target="$(realpath -e -- "$src/SKILL.md")"
+    case "$link_target" in "$source_dir"/*) ;; *) continue ;; esac
+  fi
   name="$(basename "$src")"
   case "$name" in .*) continue ;; esac
   mkdir -p "$TARGET/$name"
   cp -a "$src". "$TARGET/$name/"
+  if [ -L "$src/SKILL.md" ]; then
+    cp -L --remove-destination -- "$src/SKILL.md" "$TARGET/$name/SKILL.md"
+  fi
   echo "installed skill: $name -> $TARGET/$name"
   installed=$((installed + 1))
 done
