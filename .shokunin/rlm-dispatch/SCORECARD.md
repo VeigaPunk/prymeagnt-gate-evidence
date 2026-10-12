@@ -49,3 +49,8 @@ Three negative fixtures' registry `sessionFile` values now resolve inside their 
 ## Round 14 proposal
 - Operability: improved narrowly; isolated invalid UTF-8 at registry, session JSONL, and settlement boundaries changes baseline uncaught traceback/exit 1 to generic FAIL/exit 1 without traceback; valid positive and all prior regression controls retain outcomes.
 - Calibration: unchanged; only decode exception reporting changes, not accepted receipt predicates. Synthetic local tests only; no live provider/authentication claim. Filesystem I/O errors are not caught or claimed.
+
+
+## Round 15 proposal
+- Calibration: improved narrowly; ignored NaN/Infinity/-Infinity baseline false passes at each JSON boundary now reject as generic malformed JSON. Positive and prior controls retained.
+- Operability: unchanged. No provider/usage inference and no claim of semantic receipt authenticity. Synthetic local fixture scope only.

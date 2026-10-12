@@ -10,6 +10,14 @@ class DuplicateKeyError(ValueError):
     pass
 
 
+class InvalidJSONConstant(ValueError):
+    pass
+
+
+def reject_nonfinite_constant(value):
+    raise InvalidJSONConstant
+
+
 def reject_duplicate_keys(pairs):
     result = {}
     for key, value in pairs:
@@ -20,7 +28,7 @@ def reject_duplicate_keys(pairs):
 
 
 def parse_json(text):
-    return json.loads(text, object_pairs_hook=reject_duplicate_keys)
+    return json.loads(text, object_pairs_hook=reject_duplicate_keys, parse_constant=reject_nonfinite_constant)
 EXPECTED_PROVIDER = "openai-codex"
 EXPECTED_MODEL = "gpt-6-luna"
 
@@ -37,7 +45,7 @@ def verify(registry_path, session_path, settlement_path):
         settlement = load(settlement_path)
     except DuplicateKeyError:
         return ["input contains duplicate JSON object keys"]
-    except json.JSONDecodeError:
+    except (json.JSONDecodeError, InvalidJSONConstant):
         return ["input contains malformed JSON syntax"]
     except UnicodeDecodeError:
         return ["input contains invalid UTF-8 encoding"]
@@ -77,7 +85,7 @@ def verify(registry_path, session_path, settlement_path):
         events = [parse_json(line) for line in session_file.read_text(encoding="utf-8").splitlines() if line.strip()]
     except DuplicateKeyError:
         return ["input contains duplicate JSON object keys"]
-    except json.JSONDecodeError:
+    except (json.JSONDecodeError, InvalidJSONConstant):
         return ["input contains malformed JSON syntax"]
     except UnicodeDecodeError:
         return ["input contains invalid UTF-8 encoding"]

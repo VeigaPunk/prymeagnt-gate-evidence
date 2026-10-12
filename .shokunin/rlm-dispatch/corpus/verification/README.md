@@ -56,3 +56,12 @@ python3 "$V/verify_receipt.py" "$V/fixtures/utf8-session-only/registry.json" "$V
 python3 "$V/verify_receipt.py" "$V/fixtures/utf8-settlement-only/registry.json" "$V/fixtures/utf8-settlement-only/sub-fixture-a/session.jsonl" "$V/fixtures/utf8-settlement-only/settlement.json"
 python3 "$V/verify_receipt.py" "$V/fixtures/utf8-unique-positive/registry.json" "$V/fixtures/utf8-unique-positive/sub-fixture-a/session.jsonl" "$V/fixtures/utf8-unique-positive/settlement.json"
 ```
+
+
+R15 non-standard JSON constants fixtures (each negative independently inserts one of NaN, Infinity, or -Infinity in registry, session JSONL, or settlement; local copied positive passes):
+```sh
+python3 "$V/verify_receipt.py" "$V/fixtures/nonfinite-registry-only/registry.json" "$V/fixtures/nonfinite-registry-only/sub-fixture-a/session.jsonl" "$V/fixtures/nonfinite-registry-only/settlement.json"
+python3 "$V/verify_receipt.py" "$V/fixtures/nonfinite-session-only/registry.json" "$V/fixtures/nonfinite-session-only/sub-fixture-a/session.jsonl" "$V/fixtures/nonfinite-session-only/settlement.json"
+python3 "$V/verify_receipt.py" "$V/fixtures/nonfinite-settlement-only/registry.json" "$V/fixtures/nonfinite-settlement-only/sub-fixture-a/session.jsonl" "$V/fixtures/nonfinite-settlement-only/settlement.json"
+python3 "$V/verify_receipt.py" "$V/fixtures/nonfinite-unique-positive/registry.json" "$V/fixtures/nonfinite-unique-positive/sub-fixture-a/session.jsonl" "$V/fixtures/nonfinite-unique-positive/settlement.json"
+```

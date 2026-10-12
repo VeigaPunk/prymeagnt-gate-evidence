@@ -136,3 +136,11 @@
 - Native `python3` tests preserved the nine original control exits `0/1/0/1/1/0/1/1/1`; R10 duplicate registry/session/settlement and unique-positive remain `1/1/1/0`; R11 four malformed-shape negatives plus positive remain `1/1/1/1/0`; R12 three malformed-syntax negatives plus positive remain `1/1/1/0`.
 - Synthetic local files only; no provider, daemon, authentication, or runtime behavior claim. Evidence does not cover filesystem I/O errors or other encodings.
 - Verdict: operability improved narrowly (decode failures are concise verifier failures rather than tracebacks); calibration unchanged (valid/invalid receipt acceptance criteria unchanged).
+
+
+## Round 15 — reject non-standard JSON constants
+- `parse_json()` now supplies `parse_constant` and rejects Python JSON decoder extensions `NaN`, `Infinity`, and `-Infinity` with a dedicated exception. At registry, settlement, and session JSONL boundaries this maps to the existing generic malformed JSON error. Duplicate-key handling and receipt predicates are unchanged.
+- Three isolated local negative fixtures place one ignored non-finite value at a time in registry, session JSONL, or settlement. At baseline `2eecc8c`, all three falsely PASS/0; current all return `FAIL: input contains malformed JSON syntax` / exit 1. Copied locality-correct positive passes baseline/current (0/0).
+- Retained checks: original nine fixture outcomes `0/1/0/1/1/0/1/1/1`; R10 duplicate isolated + positive `1/1/1/0`; R11 shape `1/1/1/1/0`; R12 syntax negatives `1/1/1`, with isolated syntax positive requires correct local registry path; R14 UTF-8 `1/1/1/0`.
+- Native Python fixture-only validation; no provider, daemon, authentication, runtime, or semantic-receipt-authenticity claim.
+- Verdict: calibration improved narrowly for non-JSON token rejection; operability unchanged. No provider/usage inference.
