@@ -30,3 +30,8 @@ The Round 9 two-axis proposal above is superseded by the append-only LOG correct
 
 ## Round 10 evidence correction
 Isolated local fixtures now independently exercise duplicate registry, nested session event role, duplicate settlement, and a unique positive; baseline/current exits `0/1`, `0/1`, `0/1`, and `0/0`. Calibration remains narrowly improved; operability unchanged, nine controls preserved. Synthetic evidence only.
+
+
+## Round 11 proposal
+- Operability: improved narrowly; four isolated malformed-shape cases previously escaped as uncaught `AttributeError`; current verifier returns generic failure, while positive exit remains 0. All nine prior outcomes are preserved.
+- Calibration: unchanged; checks are limited to shape safety before existing acceptance logic. Synthetic tests only; no provider authentication or live behavior claim.

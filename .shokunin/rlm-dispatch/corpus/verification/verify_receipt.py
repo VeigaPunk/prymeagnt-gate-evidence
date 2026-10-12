@@ -37,11 +37,16 @@ def verify(registry_path, session_path, settlement_path):
         settlement = load(settlement_path)
     except DuplicateKeyError:
         return ["input contains duplicate JSON object keys"]
+    if not isinstance(registry, dict) or not isinstance(settlement, dict):
+        return ["input JSON shape is invalid"]
+    model = registry.get("model")
+    if not isinstance(model, dict):
+        return ["input JSON shape is invalid"]
     if registry.get("type") != "rlm_subagent":
         errors.append("registry type mismatch (expected rlm_subagent)")
-    if registry.get("model", {}).get("provider") != EXPECTED_PROVIDER:
+    if model.get("provider") != EXPECTED_PROVIDER:
         errors.append("registry provider mismatch")
-    if registry.get("model", {}).get("modelId") != EXPECTED_MODEL:
+    if model.get("modelId") != EXPECTED_MODEL:
         errors.append("registry model mismatch")
     if registry.get("status") != "completed":
         errors.append("registry is not completed")
@@ -68,6 +73,16 @@ def verify(registry_path, session_path, settlement_path):
         events = [parse_json(line) for line in session_file.read_text(encoding="utf-8").splitlines() if line.strip()]
     except DuplicateKeyError:
         return ["input contains duplicate JSON object keys"]
+    if any(not isinstance(event, dict) for event in events):
+        return ["input JSON shape is invalid"]
+    for event in events:
+        if event.get("type") == "message":
+            message = event.get("message")
+            if not isinstance(message, dict):
+                return ["input JSON shape is invalid"]
+            content = message.get("content", [])
+            if not isinstance(content, list) or any(not isinstance(part, dict) for part in content):
+                return ["input JSON shape is invalid"]
     model_changes = [e for e in events if e.get("type") == "model_change"]
     if not model_changes:
         errors.append("session has no model_change provenance")

@@ -106,3 +106,11 @@
 - Independent review correctly noted the original tenth fixture combines two parse locations and cannot isolate their individual evidence. Added private synthetic fixture directories `corpus/verification/fixtures/duplicate-registry-only/`, `duplicate-session-only/`, `duplicate-settlement-only/`, and `duplicate-unique-positive/`; README records exact invocation paths.
 - Native `python3` baseline/current exits in that order: registry 0/1, session 0/1, settlement 0/1, unique positive 0/0. Each duplicate fixture contains only one duplicate-key input pathway; unique fixture confirms valid JSON still passes.
 - This closes the isolated-path evidence gap; original nine outcomes remain 0/1/0/1/1/0/1/1/1. Synthetic-only, no live auth/provider usage claims.
+
+
+## Round 11 — reject malformed JSON shapes
+- Added minimal structural checks before nested dereferences: registry and settlement roots must be objects, registry `model` must be an object, session JSONL events must be objects, and message events must carry an object `message` and list-of-object `content`. `verify()` API is unchanged; failures are generic and do not disclose payloads or paths.
+- Four isolated malformed fixtures each reproduce the prior crash pathway: registry `model: null`, registry root array, settlement root null, and message event `message: null`. Baseline each raised `AttributeError` (uncaught, process exit 1 with traceback); current each returns generic FAIL exit 1 without traceback. Distinct positive `shape-r11/positive` remains PASS exit 0.
+- All original nine current exits remain `0/1/0/1/1/0/1/1/1`; R10 duplicate registry/session/settlement and unique-positive fixture exits remain `1/1/1/0`.
+- Native `python3` only; synthetic local receipts, no provider or daemon invocation, no authentication or provider-behavior claim.
+- Verdict: operability improved narrowly (malformed shapes now fail closed as verifier results rather than uncaught exceptions); calibration unchanged (valid/invalid receipt acceptance criteria are unchanged).
