@@ -22,6 +22,10 @@ def parse_status(raw):
     timestamp = data["observed_utc"]
     if not isinstance(timestamp, str) or len(timestamp) > 40:
         raise ValueError("invalid UTC timestamp")
+    # RFC 3339 §4.3 assigns -00:00 an unknown-local-offset meaning, unlike
+    # Z/+00:00; it is not evidence that this clock value is UTC-referenced.
+    if re.search(r"-00:00$", timestamp):
+        raise ValueError("unknown local offset is not accepted as UTC")
     # datetime.fromisoformat stores at most microseconds; reject rather than
     # silently changing a caller-supplied timestamp with finer precision.
     if re.search(r"\.\d{7,}(?=(?:Z|[+-]\d{2}:?\d{2})$)", timestamp):
