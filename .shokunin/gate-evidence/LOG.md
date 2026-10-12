@@ -82,3 +82,7 @@ This entry corrects only closure-hash pointers in “L1 closure — rounds 7–1
 
 ## Round 13 precision-boundary correction (2026-10-12)
 R13 report’s initial text overstated its fixture: no 20-digit positive was run, and a 20-digit `Z` timestamp would exceed the existing 40-character total limit (41 chars). Actual positives: 7-digit `Z`, 14-digit `+00:00`; correction adds 19-digit `Z` boundary positive and 20-digit `Z` length-limit negative. “Arbitrary fractional precision” is limited to fractions fitting the existing total timestamp length <=40. Boundary-test work commit `ae613ad428375ad4b81dd963f3718e329c6a934f`; native contract checker exit 0. See append-only correction in `.shokunin/reports/round-13/gate-evidence.md`. No axis judgment change or host-gate proof.
+
+
+## Round 14 duplicate-key calibration (2026-10-12)
+Native parser/process test: object_pairs_hook rejects duplicate JSON keys at any depth. Raw duplicate top-level `observed_utc` and nested `status` both returned 2 with no stdout and generic error before Git gate; unique-key control and prior R13 timestamp controls passed. Contract, gate fixture, autonomous fixture, compilation, and diff-check passed. Proposed calibration improved narrowly; coverage unchanged. Synthetic evidence only, no host autonomous acceptance/stop claim. See `.shokunin/reports/round-14/gate-evidence.md`.

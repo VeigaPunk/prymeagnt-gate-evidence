@@ -10,9 +10,13 @@ BASE = "52d573bdf502cb1416d65c0756106db9d5b3bde2"
 CANDIDATE = "bc1bb3c572981158f8ac0b4994d3333741650886"
 
 
-def run(snapshot):
+def run_raw(raw):
     return subprocess.run([sys.executable, str(SCRIPT), "--base", BASE, "--candidate", CANDIDATE],
-                          input=json.dumps(snapshot), text=True, capture_output=True, check=False)
+                          input=raw, text=True, capture_output=True, check=False)
+
+
+def run(snapshot):
+    return run_raw(json.dumps(snapshot))
 
 
 def main():
@@ -85,6 +89,16 @@ def main():
     rejected = run({**synthetic, "objective": poison})
     assert rejected.returncode == 2 and not rejected.stdout
     assert poison not in rejected.stderr
+    valid = json.dumps(synthetic)
+    duplicate_inputs = (
+        valid[:-1] + ',"observed_utc":"2026-10-11T00:00:00Z"}',
+        valid.replace('"status": "active"', '"status": "active", "status": "active"'),
+    )
+    for raw_duplicate in duplicate_inputs:
+        duplicate = run_raw(raw_duplicate)
+        assert duplicate.returncode == 2 and not duplicate.stdout
+        assert "invalid redacted status; no gate run" in duplicate.stderr
+        assert raw_duplicate not in duplicate.stderr and "active" not in duplicate.stderr
     malformed = run({"observed_utc": "2026-10-11T00:00:00+01:00", "goal": None})
     assert malformed.returncode == 2 and not malformed.stdout
     # These are accepted by datetime.fromisoformat, but not the RFC3339
@@ -95,7 +109,7 @@ def main():
             nonconforming.replace("Z", "+00:00"))
         rejected_syntax = run({**synthetic, "observed_utc": nonconforming})
         assert rejected_syntax.returncode == 2 and not rejected_syntax.stdout, nonconforming
-    print("synthetic parent projection: positive and null parsed; strict RFC3339 UTC syntax rejects space/+0000/+00; real read-only Git gate exit 0;"
+    print("synthetic parent projection: positive and null parsed; duplicate object keys rejected before gate; strict RFC3339 UTC syntax rejects space/+0000/+00; real read-only Git gate exit 0;"
           " stdin whitespace negative control failed as expected;"
           " objective/secret injection and non-UTC timestamp rejected without receipt")
 

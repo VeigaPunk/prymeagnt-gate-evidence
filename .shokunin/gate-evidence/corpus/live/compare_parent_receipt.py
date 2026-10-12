@@ -15,8 +15,17 @@ def utc():
     return datetime.now(timezone.utc).isoformat()
 
 
+def _unique_object(pairs):
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValueError("duplicate JSON object key")
+        result[key] = value
+    return result
+
+
 def parse_status(raw):
-    data = json.loads(raw)
+    data = json.loads(raw, object_pairs_hook=_unique_object)
     if not isinstance(data, dict) or set(data) != {"goal", "observed_utc"}:
         raise ValueError("expected exactly redacted goal and UTC clock keys")
     timestamp = data["observed_utc"]
