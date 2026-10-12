@@ -18,6 +18,8 @@ def verify(registry_path, session_path, settlement_path):
     errors = []
     registry = load(registry_path)
     settlement = load(settlement_path)
+    if registry.get("type") != "rlm_subagent":
+        errors.append("registry type mismatch (expected rlm_subagent)")
     if registry.get("model", {}).get("provider") != EXPECTED_PROVIDER:
         errors.append("registry provider mismatch")
     if registry.get("model", {}).get("modelId") != EXPECTED_MODEL:

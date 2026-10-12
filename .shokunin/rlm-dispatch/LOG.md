@@ -81,3 +81,10 @@
 
 ## Reviewer-name correction — 2026-10-12
 - The R8 review at `80b6ce4` was by `dispatch-r8-review`, not “R8/R7 independent review.” The earlier wording is preserved above; this line corrects its reviewer attribution.
+
+
+## Round 9 — native registry discriminator
+- Round-2 live registry evidence has native `type: "rlm_subagent"`; smoke-test-rerun line 231 also records an `rlm_subagent` event, and the assignment reports 175/175 native records with this discriminator. The verifier previously ignored registry `type`, accepting explicit wrong values and absent values. It now requires exact `rlm_subagent`; no missing-type legacy allowance.
+- Updated the eight existing synthetic registry fixtures to include `type`; changed linked-good to explicit wrong type as the negative regression. Existing expected exits remain 0/1/0/1/1/0/1/1. Baseline at `f7c1410` passes the wrong-type fixture (0); current rejects it (1).
+- Corpus basis: recorded round-2 registry documented in `corpus/knowledge/2026-10-11-round2-admission.md`, plus native event at `verification/smoke-test-rerun-20261011.log:231` and assignment-provided census 175/175. No private child/session identifiers copied. Synthetic fixture updates reflect schema only; they are not new live provider authentication or runtime evidence.
+- Operability: improved (wrong discriminator formerly passed and now fails; commands are documented). Calibration: improved (enforces exact observed native discriminator, rejects missing and wrong values rather than treating absent schema as compatible). Synthetic verifier evidence only.

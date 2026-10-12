@@ -14,3 +14,7 @@ retired: none.
 - R7: admitted — operability improved; calibration unchanged (independent review: `promotion-and-session-review`, `984a3a6`).
 - R8: unchanged — operability unchanged; calibration unchanged; no axis advance (independent review: `R8/R7 independent review`, `80b6ce4`).
 - No scalar score assigned. Synthetic verifier evidence only; no live provider authentication or usage/depletion proof.
+
+## Round 9 proposal
+- Operability: improved — wrong-type synthetic registry formerly passed, now rejected; eight documented outcomes retained.
+- Calibration: improved — exact observed native discriminator enforced; missing `type` is rejected, not accepted as legacy. Synthetic schema tests only; no new live provider authentication evidence.
