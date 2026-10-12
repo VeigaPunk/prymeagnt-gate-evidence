@@ -25,3 +25,8 @@ The nine prior controls retain baseline/current exits `0/1/0/1/1/0/1/1/1`. The t
 Synthetic local fixtures only. No provider, daemon, or live authentication was used. No claim is made about file/read errors, NUL paths, or general I/O handling. Scope is `.shokunin/rlm-dispatch/**` plus this report; no manifest/global harness/integration changes.
 
 Canonical Git author and committer: `rlm-dispatch-shokunin <rlm-dispatch@shokunin.local>`.
+
+
+## Report-last ordering correction
+
+The initial R12 commit `011008216c10ef4dcf132e8ae90b9b5dbb67d424` included both verifier/fixture changes and this report, so it did not follow the requested report-last sequence. That commit is preserved without rewriting history. This report-only follow-up commit records the correction after the code commit; the final report closure is therefore committed separately after code. No code or fixture changes are included here.
