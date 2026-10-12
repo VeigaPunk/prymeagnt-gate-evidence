@@ -1,21 +1,15 @@
-# gate-evidence — domain corpus
+# Corpus index
 
-This is the reference corpus of the **gate-evidence** shokunin lane from the prymeagnt
-craft campaign (2026-10-11/12): precedents, fixtures, receipts, probes, and
-lessons the lane accumulated while iterating on its province. Like a craft
-master's notebook, it serves three purposes:
+| entry | topic | added |
+|---|---|---|
+| knowledge/seed.md | cited initial observations and uncertainty | 2026-10-11 |
+| knowledge/gate-decision-table.md | sourced baseline, candidate and goal decision table | 2026-10-11 |
+| fixtures/README.md | round-2 deterministic table exercise, input/expected/actual and checker | 2026-10-11 |
+| fixtures/autonomous-cases.json | round-3 synthetic retry-ceiling and gate-pass/unmet-goal branch inputs, with checker and actual | 2026-10-11 |
+| live/README.md | round-4 read-only live Git whitespace gate and controlled negative control | 2026-10-11 |
+| knowledge/goal-read-boundary-r5.md | round-5 child-session goal read boundary and five-row status/receipt decision table | 2026-10-11 |
+| fixtures/r11-syntax-cases.json | round-11 synthetic datetime.fromisoformat false-accepts versus strict RFC3339-shape rejections | 2026-10-12 |
 
-1. **Reference guide** — cited, replayable evidence for judging future rounds
-   (every fixture carries its counting command).
-2. **Discovery corpus** — the raw material for finding new moves in the domain.
-3. **Inspiration source** — negative results and honest refusals included;
-   they bound what the lane may claim.
+Append new lessons; corrections are additional entries, never destructive rewrites.
 
-Provenance: copied from the lane's round worktrees (.shokunin/gate-evidence/corpus and
-related books), which remain canonical and append-only. Round-by-round
-history lives on the craft/* branches of this repo; the fleet ledger is
-.shokunin/MANIFEST.json there.
-
-Province: prime-agent goal/autonomous-gate receipts and honest stop classification (compare_parent_receipt.py). Shonen; end-to-end box open — r20 documented the blocker.
-
-Upstream: https://github.com/VeigaPunk/prymeagnt-gate-evidence (branch main carries this corpus; craft/* branches carry round history). Local execution references it with: git fetch gate-evidence main
+Operator probe lessons (2026-10-12): goal/gate observability pinned to substrate — see corpus/lessons/2026-10-12-probe-goal-gate-observability.md
