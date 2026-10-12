@@ -32,10 +32,10 @@ def parse_status(raw):
         raise ValueError("UTC timestamp precision exceeds microseconds")
     # datetime.fromisoformat accepts non-RFC3339 variants (space separator,
     # basic +0000 offset); require the RFC3339 timestamp shape first.
-    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,6})?(?:Z|[+-]\d{2}:\d{2})", timestamp):
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}[Tt]\d{2}:\d{2}:\d{2}(?:\.\d{1,6})?(?:[Zz]|[+-]\d{2}:\d{2})", timestamp):
         raise ValueError("invalid UTC timestamp syntax")
     try:
-        clock = datetime.fromisoformat(timestamp.replace("Z", "+00:00"))
+        clock = datetime.fromisoformat(timestamp[:-1] + "+00:00" if timestamp[-1:] in "Zz" else timestamp)
     except ValueError as exc:
         raise ValueError("invalid UTC timestamp") from exc
     if clock.utcoffset() is None or clock.utcoffset().total_seconds() != 0:
