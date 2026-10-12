@@ -18,3 +18,8 @@ Explicit limitation: this is not leap-second completeness and does not prove hos
 - **Calibration: unchanged.** Existing syntax, UTC-offset, date, leap-second, null, injection and gate controls remain; this broadens precision acceptance only. Evidence is synthetic/native parser contract testing, not host-gate proof.
 
 No MANIFEST/global harness changes or push. No gate mutation or host autonomous proof claimed.
+
+
+## Append-only correction — precision boundary (2026-10-12)
+
+The original summary incorrectly said “20 fractional digits with `Z` and `+00:00`.” A 20-digit `Z` timestamp is 41 characters and cannot pass the existing 40-character whole-timestamp limit; the prior fixture actually tested 14 digits with `+00:00`. The observed accepted fractions are 7 and 19 digits with `Z`, and 14 digits with `+00:00`. Added native control confirms 20 digits with `Z` is rejected by the 40-character limit. “Arbitrary precision” means any fraction length that fits the existing whole-timestamp cap, not unbounded digits. New boundary work commit: `ae613ad428375ad4b81dd963f3718e329c6a934f`; contract checker passed exit 0. This correction supersedes only the erroneous digit counts above; axis judgments and limitations are unchanged.
