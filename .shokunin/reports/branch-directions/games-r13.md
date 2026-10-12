@@ -72,3 +72,12 @@ Expected negative-control exits are not passes for positive behavior. The mutant
 ## Git evidence
 
 Implementation commit: `bcd7777523f95d6dc83f91e77b2d53ce0310b55b`. Report is a separate report-only commit after all fixture/control runs. Required Git author and committer identity: `games-engine-mechanics-research <games-engine-mechanics-research@shokunin.local>`. No other paths are staged.
+
+
+## Append-only correction — scheduling sensitivity and movement-count wording
+
+The earlier `unrelated_release_moves=6` PASS field is a **literal label**, not a measured move count: the test captures `before_f_up_frames`, awaits six `physics_frame`s, then asserts only `actor.moves > before_f_up_frames`. The actual guarantee is continued physics movement during that six-frame window (at least one increment), not exactly six increments. The post-E-up assertion compares the move count before and after ten physics frames and requires equality (`post_E_release_moves=0`). Receipt assertions require E press count 1, F release count 0, and E release count 1.
+
+These chain controls are startup/scheduling-sensitive under parallel Godot launches. Independent review observed 4/7 chain cases encountering `current_scene == null` or the global process-frame bound when launched in parallel; serial execution gave 7/7 expected outcomes, and the key-up case passed 5/5 serial repeats. Accordingly the reported PASS evidence is for bounded serial native runs, not parallel reliability. The original native outputs/exits are retained above; intermittent parallel failures should not be mistaken for a stable behavior result. No fixture changes were made for this correction.
+
+Correction committed report-only after implementation. Required report-last author and committer remain `games-engine-mechanics-research <games-engine-mechanics-research@shokunin.local>`.
