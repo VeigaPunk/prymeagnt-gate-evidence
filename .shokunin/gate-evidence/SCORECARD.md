@@ -17,3 +17,7 @@ Supersedes the stale planned statement above that an actual status/UTC projectio
 
 ## Correction — closure commit pointers (2026-10-12)
 This append-only correction supersedes the closure-hash references in “L1 closure correction — 2026-10-12” above: R7 pointer `91831c0` was wrong; correct closure is `2bef169`. R8 pointer `d53d29b` was wrong; correct closure is `b91df28`. R9 `91831c0` and R10 `c60cd8f` were correct and remain unchanged. Correct pointers: R7 `2bef169`, R8 `b91df28`, R9 `91831c0`, R10 `c60cd8f`. No verdict or evidence claim changes.
+
+
+## Round 11 evidence (synthetic, no score assigned)
+Calibration evidence: `corpus/fixtures/r11-syntax-cases.json` gives 3 baseline `datetime.fromisoformat` accepts (`T` space, `+0000`, `+00`) rejected by strict candidate syntax; `python3 .shokunin/gate-evidence/corpus/live/check_parent_receipt_contract.py` passed. Z/+00:00 and six-digit fraction controls pass; -00:00, >6 digits, non-UTC controls reject. Leap second remains unsupported. Proposed calibration improved narrowly; coverage unchanged (no new policy branches). These are synthetic parser/process tests, not host autonomous or acceptance proof.
