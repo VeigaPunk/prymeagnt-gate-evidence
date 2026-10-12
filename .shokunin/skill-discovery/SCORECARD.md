@@ -19,3 +19,7 @@ Supersedes the proposed L1-requested wording above for round 7 only. Independent
 ## L1 appendix — R9 closure (2026-10-12)
 
 R9: **operability narrowly improved; freshness unchanged**. Actual baseline and current installers were exercised with identical private fake+valid and only-fake fixtures using `corpus/probes/r9-installer-skillmd.sh <installer-path>`. Baseline mixed exit 0/count 2 and only-fake exit 0/count 1; current mixed exit 0/count 1 and only-fake exit 1/count 0. This demonstrates source-format filtering only, not process discovery or reload. Report: `.shokunin/reports/round-9/skill-discovery.md`.
+
+## R11 lane observation — 2026-10-12 (awaiting L1 verdict)
+
+Operability **improved narrowly**: direct source directory link now skipped before target creation. Baseline/current mixed install 0/2 → 0/1 and only-link 0/1 → 1/0; fresh-process inventory excludes outside-skill and preserves ordinary. Freshness **unchanged**: fresh CLI processes only; no daemon/reload. See `.shokunin/reports/round-11/skill-discovery.md` and private R11 probe; R9/R10 controls passed.

@@ -36,6 +36,7 @@ mkdir -p "$TARGET"
 
 installed=0
 for src in "$SOURCE"/*/; do
+  [ -L "${src%/}" ] && continue
   [ -d "$src" ] || continue
   [ -f "$src/SKILL.md" ] || continue
   if [ -L "$src/SKILL.md" ]; then
