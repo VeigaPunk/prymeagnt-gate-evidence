@@ -1,0 +1,57 @@
+{
+  "captured_utc": "2026-10-12T10:01:02.165633+00:00",
+  "cwd": "/home/vgpnk/Projects/prymeagnt-archive/lanes/gate-evidence/r19-budget",
+  "goal_get_scope": "this session only; null goal is not evidence of another session",
+  "goal_projection": {
+    "goal": null,
+    "observed_utc": "2026-10-12T10:00:49.284832+00:00"
+  },
+  "host_autonomous_gate": "unobserved; no configured gate or host execution receipt supplied",
+  "limitation": "Both commands are local benign Git gate/comparator diagnostics, not host autonomous completion-gate executions. No goal.complete called.",
+  "runs": [
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--check",
+        "52d573bdf502cb1416d65c0756106db9d5b3bde2",
+        "bc1bb3c572981158f8ac0b4994d3333741650886"
+      ],
+      "ended_utc": "2026-10-12T10:01:02.165648+00:00",
+      "exit_code": 0,
+      "shell_command": "git diff --check 52d573bdf502cb1416d65c0756106db9d5b3bde2 bc1bb3c572981158f8ac0b4994d3333741650886",
+      "started_utc": "2026-10-12T10:00:49.284898+00:00",
+      "stderr": "not separated by shell wrapper; see replay",
+      "stdout": "",
+      "working_tree_before": "clean at 1d653797250abe831952b5f4d02312e7c53463c7"
+    },
+    {
+      "argv": [
+        "python3",
+        ".shokunin/gate-evidence/corpus/live/compare_parent_receipt.py",
+        "--base",
+        "52d573bdf502cb1416d65c0756106db9d5b3bde2",
+        "--candidate",
+        "bc1bb3c572981158f8ac0b4994d3333741650886"
+      ],
+      "ended_utc": "2026-10-12T10:01:02.165652+00:00",
+      "exit_code": 0,
+      "shell_command": "printf %s '{\"goal\": null, \"observed_utc\": \"2026-10-12T10:00:49.284832+00:00\"}' | python3 .shokunin/gate-evidence/corpus/live/compare_parent_receipt.py --base 52d573bdf502cb1416d65c0756106db9d5b3bde2 --candidate bc1bb3c572981158f8ac0b4994d3333741650886",
+      "started_utc": "2026-10-12T10:00:49.285597+00:00",
+      "stderr": "not separated by shell wrapper; see replay",
+      "stdout": "{\n  \"acceptance\": \"not-assessed\",\n  \"autonomous_gate\": \"not-assessed\",\n  \"comparison\": \"same recording, independent inputs; no causal inference\",\n  \"gate\": {\n    \"base\": \"52d573bdf502cb1416d65c0756106db9d5b3bde2\",\n    \"candidate\": \"bc1bb3c572981158f8ac0b4994d3333741650886\",\n    \"ended_utc\": \"2026-10-12T10:00:49.309833+00:00\",\n    \"exit_code\": 0,\n    \"kind\": \"read-only Git diff --check\",\n    \"result\": \"pass\",\n    \"started_utc\": \"2026-10-12T10:00:49.308978+00:00\"\n  },\n  \"goal_complete_called\": false,\n  \"goal_snapshot\": {\n    \"goal_present\": false,\n    \"observed_utc\": \"2026-10-12T10:00:49.284832+00:00\",\n    \"status\": null,\n    \"time_used_seconds\": null,\n    \"token_budget\": null,\n    \"tokens_used\": null\n  },\n  \"loop_stop\": \"not-assessed\",\n  \"mission_goal\": \"not-assessed\",\n  \"schema\": \"parent-redacted-goal-v1\",\n  \"status_provenance\": \"parent-supplied projection; not verified by this program\"\n}\n",
+      "working_tree_before": "clean at 1d653797250abe831952b5f4d02312e7c53463c7"
+    }
+  ],
+  "schema": "gate-evidence-r20-live-diagnostic-v1",
+  "working_tree_before": {
+    "argv": [
+      "git",
+      "status",
+      "--porcelain=v1"
+    ],
+    "exit_code": 0,
+    "head": "1d653797250abe831952b5f4d02312e7c53463c7",
+    "stdout": ""
+  }
+}

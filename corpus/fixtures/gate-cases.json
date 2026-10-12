@@ -1,0 +1,93 @@
+[
+  {
+    "id": "baseline-failed",
+    "baseline": "failed",
+    "candidate": "pass",
+    "criteria": "met",
+    "expected": {
+      "candidate_gates_passed": false,
+      "id": "baseline-failed",
+      "case": "B0",
+      "mission_goal": "not-assessed",
+      "goal_complete_permitted": false
+    }
+  },
+  {
+    "id": "baseline-unrun",
+    "baseline": "unrun",
+    "candidate": "pass",
+    "criteria": "met",
+    "expected": {
+      "candidate_gates_passed": false,
+      "id": "baseline-unrun",
+      "case": "B0",
+      "mission_goal": "not-assessed",
+      "goal_complete_permitted": false
+    }
+  },
+  {
+    "id": "candidate-failed",
+    "baseline": "pass",
+    "candidate": "failed",
+    "criteria": "met",
+    "expected": {
+      "candidate_gates_passed": false,
+      "id": "candidate-failed",
+      "case": "C0",
+      "mission_goal": "not-assessed",
+      "goal_complete_permitted": false
+    }
+  },
+  {
+    "id": "candidate-unrun",
+    "baseline": "pass",
+    "candidate": "unrun",
+    "criteria": "met",
+    "expected": {
+      "candidate_gates_passed": false,
+      "id": "candidate-unrun",
+      "case": "C0",
+      "mission_goal": "not-assessed",
+      "goal_complete_permitted": false
+    }
+  },
+  {
+    "id": "goal-unmet",
+    "baseline": "pass",
+    "candidate": "pass",
+    "criteria": "unmet",
+    "expected": {
+      "candidate_gates_passed": true,
+      "id": "goal-unmet",
+      "case": "G0",
+      "mission_goal": "incomplete",
+      "goal_complete_permitted": false
+    }
+  },
+  {
+    "id": "goal-unverified",
+    "baseline": "pass",
+    "candidate": "pass",
+    "criteria": "unverified",
+    "expected": {
+      "candidate_gates_passed": true,
+      "id": "goal-unverified",
+      "case": "G?",
+      "mission_goal": "unverified",
+      "goal_complete_permitted": false
+    }
+  },
+  {
+    "id": "goal-met",
+    "baseline": "pass",
+    "candidate": "pass",
+    "criteria": "met",
+    "expected": {
+      "candidate_gates_passed": true,
+      "id": "goal-met",
+      "case": "G1",
+      "mission_goal": "satisfied",
+      "goal_complete_permitted": true
+    }
+  }
+]

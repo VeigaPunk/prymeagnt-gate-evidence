@@ -1,0 +1,18 @@
+[
+  {
+    "candidate_gates_passed": false,
+    "case": "A0",
+    "goal_complete_permitted": false,
+    "id": "retry-limit-gate-failed",
+    "loop_stop": "unclassified",
+    "mission_goal": "not-assessed"
+  },
+  {
+    "candidate_gates_passed": true,
+    "case": "A1",
+    "goal_complete_permitted": false,
+    "id": "gate-pass-goal-unmet",
+    "loop_stop": "unclassified",
+    "mission_goal": "incomplete"
+  }
+]

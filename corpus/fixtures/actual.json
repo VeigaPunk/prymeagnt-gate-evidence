@@ -1,0 +1,51 @@
+[
+  {
+    "candidate_gates_passed": false,
+    "case": "B0",
+    "goal_complete_permitted": false,
+    "id": "baseline-failed",
+    "mission_goal": "not-assessed"
+  },
+  {
+    "candidate_gates_passed": false,
+    "case": "B0",
+    "goal_complete_permitted": false,
+    "id": "baseline-unrun",
+    "mission_goal": "not-assessed"
+  },
+  {
+    "candidate_gates_passed": false,
+    "case": "C0",
+    "goal_complete_permitted": false,
+    "id": "candidate-failed",
+    "mission_goal": "not-assessed"
+  },
+  {
+    "candidate_gates_passed": false,
+    "case": "C0",
+    "goal_complete_permitted": false,
+    "id": "candidate-unrun",
+    "mission_goal": "not-assessed"
+  },
+  {
+    "candidate_gates_passed": true,
+    "case": "G0",
+    "goal_complete_permitted": false,
+    "id": "goal-unmet",
+    "mission_goal": "incomplete"
+  },
+  {
+    "candidate_gates_passed": true,
+    "case": "G?",
+    "goal_complete_permitted": false,
+    "id": "goal-unverified",
+    "mission_goal": "unverified"
+  },
+  {
+    "candidate_gates_passed": true,
+    "case": "G1",
+    "goal_complete_permitted": true,
+    "id": "goal-met",
+    "mission_goal": "satisfied"
+  }
+]
