@@ -21,3 +21,8 @@ retired: none.
 
 ## Round 9 L1 closure correction — 2026-10-12
 The Round 9 two-axis proposal above is superseded by the append-only LOG correction and L1 manifest closure at `2113cef`. The author restored the `linked-good` positive and added a separate ninth wrong-type fixture; the eight earlier outcomes remained `0/1/0/1/1/0/1/1` and the ninth changed baseline PASS (0) to final reject (1). Independent `dispatch-r9-type-review` admitted **calibration improved narrowly; operability unchanged**. This correction changes bookkeeping only; no new test, axis move, promotion, or live provider authentication is claimed.
+
+
+## Round 10 proposal
+- Operability: unchanged; all nine previous fixture outcomes retained.
+- Calibration: improved narrowly; tenth duplicate-key fixture baseline PASS (0) → current reject (1), including nested session role duplicate. Synthetic local testing only; no live provider authentication or usage-depletion claim.

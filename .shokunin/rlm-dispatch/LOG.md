@@ -93,3 +93,10 @@
 ## Round 9 correction (supersedes initial fixture counts and axis proposal)
 - Restore the original `linked-good` positive control to `type: rlm_subagent`; its earlier conversion to wrong-type had sacrificed an existing regression control. Added an isolated ninth `wrong-type` fixture instead. Baseline eight expected outcomes remain `0/1/0/1/1/0/1/1`; ninth is baseline PASS/current reject.
 - Corrected verdict: operability **unchanged** (all eight existing controls preserved; no net change in their outcomes); calibration **improved** (native discriminator requirement demonstrated by separate ninth false-PASS regression). This supersedes the initial eight-case `0/1/1/1/1/0/1/1` claim and two-axis proposal above.
+
+
+## Round 10 — reject ambiguous duplicate JSON keys
+- Added recursive duplicate object-key rejection through stdlib `object_pairs_hook` for registry and settlement JSON plus every parsed session JSONL event. Duplicate parse failures return one concise generic verifier error without echoing JSON or paths; verifier API is unchanged.
+- Added isolated tenth `duplicate-keys` fixture with wrong-then-right duplicate registry `status` and nested session message `role`. Baseline passes (0); current verifier rejects (1). Existing nine exits preserved: 0/1/0/1/1/0/1/1/1.
+- Native `python3` tests use synthetic local fixtures only; no live auth/provider usage.
+- Operability: unchanged (nine controls preserved). Calibration: improved narrowly (last-wins ambiguity no longer passes).

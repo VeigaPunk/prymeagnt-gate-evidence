@@ -5,19 +5,38 @@ import json
 from pathlib import Path
 import sys
 
+
+class DuplicateKeyError(ValueError):
+    pass
+
+
+def reject_duplicate_keys(pairs):
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            raise DuplicateKeyError
+        result[key] = value
+    return result
+
+
+def parse_json(text):
+    return json.loads(text, object_pairs_hook=reject_duplicate_keys)
 EXPECTED_PROVIDER = "openai-codex"
 EXPECTED_MODEL = "gpt-6-luna"
 
 
 def load(path):
     with Path(path).open(encoding="utf-8") as stream:
-        return json.load(stream)
+        return parse_json(stream.read())
 
 
 def verify(registry_path, session_path, settlement_path):
     errors = []
-    registry = load(registry_path)
-    settlement = load(settlement_path)
+    try:
+        registry = load(registry_path)
+        settlement = load(settlement_path)
+    except DuplicateKeyError:
+        return ["input contains duplicate JSON object keys"]
     if registry.get("type") != "rlm_subagent":
         errors.append("registry type mismatch (expected rlm_subagent)")
     if registry.get("model", {}).get("provider") != EXPECTED_PROVIDER:
@@ -45,7 +64,10 @@ def verify(registry_path, session_path, settlement_path):
     if settlement.get("rlm_child_id") != child_id:
         errors.append("collect child ID does not match registry childId")
 
-    events = [json.loads(line) for line in session_file.read_text(encoding="utf-8").splitlines() if line.strip()]
+    try:
+        events = [parse_json(line) for line in session_file.read_text(encoding="utf-8").splitlines() if line.strip()]
+    except DuplicateKeyError:
+        return ["input contains duplicate JSON object keys"]
     model_changes = [e for e in events if e.get("type") == "model_change"]
     if not model_changes:
         errors.append("session has no model_change provenance")

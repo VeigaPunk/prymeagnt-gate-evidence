@@ -8,7 +8,7 @@ python3 .shokunin/rlm-dispatch/corpus/verification/verify_receipt.py REGISTRY.js
 
 Inputs are local JSON/JSONL only; the command performs no network or runtime calls and does not modify them. The expected selector is intentionally fixed to the round's permitted `openai-codex/gpt-6-luna`. Registry fixtures carry the observed `sessionFile` field with sanitized repo-relative paths. A pass requires native registry `type: "rlm_subagent"` (missing and any other value fail; no legacy omission is accepted), matching registry and every session `model_change` provenance, completed registry status, registry `sessionFile` resolving to the supplied session path, registry `childId` matching both the session directory basename and collect `rlm_child_id`, exactly one assistant text reply matching collect `answer_preview`, and a `done`, settled, no-error collect receipt. These fields are present in the recorded round-2 receipt (`corpus/knowledge/2026-10-11-round2-admission.md`); fixture JSON uses synthetic sanitized IDs. Fixtures are synthetic examples, not authenticated live provenance or new runtime receipts.
 
-Reproduce all checks from the repository root (Commands 1, 3, 6, and 9 pass; commands 2, 4, 5, 7, and 8 fail. The ninth, new wrong-type fixture fails current verification; baseline accepts it.):
+Reproduce all checks from the repository root (Commands 1, 3, 6, and 9 pass; commands 2, 4, 5, 7, and 8 fail. The ninth wrong-type fixture and tenth duplicate-key fixture fail current verification; baseline accepts both. The tenth fixture carries wrong-then-right duplicate `status` and nested message `role` values; the stdlib pair hook rejects duplicates at every object depth.):
 
 ```sh
 V=.shokunin/rlm-dispatch/corpus/verification
@@ -24,4 +24,8 @@ python3 "$V/verify_receipt.py" "$V/fixtures/swapped-session/registry.json" "$V/f
 
 ```sh
 python3 "$V/verify_receipt.py" "$V/fixtures/wrong-type/registry.json" "$V/fixtures/wrong-type/sub-fixture-a/session.jsonl" "$V/fixtures/wrong-type/settlement.json"
+```
+
+```sh
+python3 "$V/verify_receipt.py" "$V/fixtures/duplicate-keys/registry.json" "$V/fixtures/duplicate-keys/sub-fixture-a/session.jsonl" "$V/fixtures/duplicate-keys/settlement.json"
 ```
