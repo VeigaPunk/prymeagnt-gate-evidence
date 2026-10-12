@@ -100,3 +100,9 @@
 - Added isolated tenth `duplicate-keys` fixture with wrong-then-right duplicate registry `status` and nested session message `role`. Baseline passes (0); current verifier rejects (1). Existing nine exits preserved: 0/1/0/1/1/0/1/1/1.
 - Native `python3` tests use synthetic local fixtures only; no live auth/provider usage.
 - Operability: unchanged (nine controls preserved). Calibration: improved narrowly (last-wins ambiguity no longer passes).
+
+
+## Round 10 evidence correction — isolated parser pathways
+- Independent review correctly noted the original tenth fixture combines two parse locations and cannot isolate their individual evidence. Added private synthetic fixture directories `corpus/verification/fixtures/duplicate-registry-only/`, `duplicate-session-only/`, `duplicate-settlement-only/`, and `duplicate-unique-positive/`; README records exact invocation paths.
+- Native `python3` baseline/current exits in that order: registry 0/1, session 0/1, settlement 0/1, unique positive 0/0. Each duplicate fixture contains only one duplicate-key input pathway; unique fixture confirms valid JSON still passes.
+- This closes the isolated-path evidence gap; original nine outcomes remain 0/1/0/1/1/0/1/1/1. Synthetic-only, no live auth/provider usage claims.

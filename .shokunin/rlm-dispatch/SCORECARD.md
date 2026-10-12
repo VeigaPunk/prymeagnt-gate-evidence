@@ -26,3 +26,7 @@ The Round 9 two-axis proposal above is superseded by the append-only LOG correct
 ## Round 10 proposal
 - Operability: unchanged; all nine previous fixture outcomes retained.
 - Calibration: improved narrowly; tenth duplicate-key fixture baseline PASS (0) → current reject (1), including nested session role duplicate. Synthetic local testing only; no live provider authentication or usage-depletion claim.
+
+
+## Round 10 evidence correction
+Isolated local fixtures now independently exercise duplicate registry, nested session event role, duplicate settlement, and a unique positive; baseline/current exits `0/1`, `0/1`, `0/1`, and `0/0`. Calibration remains narrowly improved; operability unchanged, nine controls preserved. Synthetic evidence only.

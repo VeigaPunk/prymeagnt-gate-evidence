@@ -1,0 +1,11 @@
+{
+  "childId": "sub-fixture-a",
+  "model": {
+    "provider": "openai-codex",
+    "modelId": "gpt-6-luna"
+  },
+  "status": "running",
+  "status": "completed",
+  "sessionFile": ".shokunin/rlm-dispatch/corpus/verification/fixtures/duplicate-registry-only/sub-fixture-a/session.jsonl",
+  "type": "rlm_subagent"
+}

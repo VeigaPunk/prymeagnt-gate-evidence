@@ -29,3 +29,12 @@ python3 "$V/verify_receipt.py" "$V/fixtures/wrong-type/registry.json" "$V/fixtur
 ```sh
 python3 "$V/verify_receipt.py" "$V/fixtures/duplicate-keys/registry.json" "$V/fixtures/duplicate-keys/sub-fixture-a/session.jsonl" "$V/fixtures/duplicate-keys/settlement.json"
 ```
+
+
+R10 isolated pathway fixtures (each command runs with native `python3`; duplicate registry/session/settlement paths fail; unique positive passes):
+```sh
+python3 "$V/verify_receipt.py" "$V/fixtures/duplicate-registry-only/registry.json" "$V/fixtures/duplicate-registry-only/sub-fixture-a/session.jsonl" "$V/fixtures/duplicate-registry-only/settlement.json"
+python3 "$V/verify_receipt.py" "$V/fixtures/duplicate-session-only/registry.json" "$V/fixtures/duplicate-session-only/sub-fixture-a/session.jsonl" "$V/fixtures/duplicate-session-only/settlement.json"
+python3 "$V/verify_receipt.py" "$V/fixtures/duplicate-settlement-only/registry.json" "$V/fixtures/duplicate-settlement-only/sub-fixture-a/session.jsonl" "$V/fixtures/duplicate-settlement-only/settlement.json"
+python3 "$V/verify_receipt.py" "$V/fixtures/duplicate-unique-positive/registry.json" "$V/fixtures/duplicate-unique-positive/sub-fixture-a/session.jsonl" "$V/fixtures/duplicate-unique-positive/settlement.json"
+```
