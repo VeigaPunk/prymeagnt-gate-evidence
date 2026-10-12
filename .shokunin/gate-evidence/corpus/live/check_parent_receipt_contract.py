@@ -34,6 +34,18 @@ def main():
                ("autonomous_gate", "acceptance", "loop_stop", "mission_goal"))
     assert result["status_provenance"].startswith("parent-supplied")
     assert result["goal_complete_called"] is False
+    # Exercise every lifecycle state documented by the goal skill, plus
+    # unknown labels that the former lexical-only check accepted.
+    for lifecycle_status in ("active", "paused", "budget-limited", "completed", "errored"):
+        projection = {**synthetic, "goal": {**synthetic["goal"], "status": lifecycle_status}}
+        accepted_lifecycle = run(projection)
+        assert accepted_lifecycle.returncode == 0, (lifecycle_status, accepted_lifecycle.stderr)
+        assert json.loads(accepted_lifecycle.stdout)["goal_snapshot"]["status"] == lifecycle_status
+    for unknown_status in ("native", "not-a-real"):
+        projection = {**synthetic, "goal": {**synthetic["goal"], "status": unknown_status}}
+        rejected_lifecycle = run(projection)
+        assert rejected_lifecycle.returncode == 2 and not rejected_lifecycle.stdout
+        assert "invalid redacted status; no gate run" in rejected_lifecycle.stderr
     precise = {**synthetic, "observed_utc": "2026-10-11T00:00:00.123456789Z"}
     truncated_old_behavior = __import__("datetime").datetime.fromisoformat(
         precise["observed_utc"].replace("Z", "+00:00")).isoformat()

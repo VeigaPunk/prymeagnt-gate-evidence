@@ -63,8 +63,10 @@ def parse_status(raw):
     if not isinstance(goal, dict) or set(goal) != {"status", "tokens_used", "time_used_seconds", "token_budget"}:
         raise ValueError("goal must contain exactly status and three clock fields")
     status = goal["status"]
-    if not isinstance(status, str) or not re.fullmatch(r"[a-z][a-z_-]{0,31}", status):
-        raise ValueError("invalid status (no free text allowed)")
+    # Keep this projection aligned with the documented goal lifecycle; unknown
+    # labels must not be presented as recognized host states.
+    if status not in {"active", "paused", "budget-limited", "completed", "errored"}:
+        raise ValueError("invalid status")
     for key in ("tokens_used", "time_used_seconds", "token_budget"):
         value = goal[key]
         if value is not None and (type(value) not in (int, float) or value < 0 or value == float("inf") or value != value):
