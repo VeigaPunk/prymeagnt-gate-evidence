@@ -47,3 +47,12 @@ python3 "$V/verify_receipt.py" "$V/fixtures/syntax-session-only/registry.json" "
 python3 "$V/verify_receipt.py" "$V/fixtures/syntax-settlement-only/registry.json" "$V/fixtures/syntax-settlement-only/sub-fixture-a/session.jsonl" "$V/fixtures/syntax-settlement-only/settlement.json"
 python3 "$V/verify_receipt.py" "$V/fixtures/syntax-unique-positive/registry.json" "$V/fixtures/syntax-unique-positive/sub-fixture-a/session.jsonl" "$V/fixtures/syntax-unique-positive/settlement.json"
 ```
+
+
+R14 invalid-UTF-8 fixtures (each failure independently corrupts registry JSON, session JSONL, or settlement JSON; the copied valid positive passes):
+```sh
+python3 "$V/verify_receipt.py" "$V/fixtures/utf8-registry-only/registry.json" "$V/fixtures/utf8-registry-only/sub-fixture-a/session.jsonl" "$V/fixtures/utf8-registry-only/settlement.json"
+python3 "$V/verify_receipt.py" "$V/fixtures/utf8-session-only/registry.json" "$V/fixtures/utf8-session-only/sub-fixture-a/session.jsonl" "$V/fixtures/utf8-session-only/settlement.json"
+python3 "$V/verify_receipt.py" "$V/fixtures/utf8-settlement-only/registry.json" "$V/fixtures/utf8-settlement-only/sub-fixture-a/session.jsonl" "$V/fixtures/utf8-settlement-only/settlement.json"
+python3 "$V/verify_receipt.py" "$V/fixtures/utf8-unique-positive/registry.json" "$V/fixtures/utf8-unique-positive/sub-fixture-a/session.jsonl" "$V/fixtures/utf8-unique-positive/settlement.json"
+```

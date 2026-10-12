@@ -39,6 +39,8 @@ def verify(registry_path, session_path, settlement_path):
         return ["input contains duplicate JSON object keys"]
     except json.JSONDecodeError:
         return ["input contains malformed JSON syntax"]
+    except UnicodeDecodeError:
+        return ["input contains invalid UTF-8 encoding"]
     if not isinstance(registry, dict) or not isinstance(settlement, dict):
         return ["input JSON shape is invalid"]
     model = registry.get("model")
@@ -77,6 +79,8 @@ def verify(registry_path, session_path, settlement_path):
         return ["input contains duplicate JSON object keys"]
     except json.JSONDecodeError:
         return ["input contains malformed JSON syntax"]
+    except UnicodeDecodeError:
+        return ["input contains invalid UTF-8 encoding"]
     if any(not isinstance(event, dict) for event in events):
         return ["input JSON shape is invalid"]
     for event in events:

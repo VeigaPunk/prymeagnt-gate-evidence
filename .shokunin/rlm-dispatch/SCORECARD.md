@@ -44,3 +44,8 @@ Three negative fixtures' registry `sessionFile` values now resolve inside their 
 ## Round 12 proposal
 - Operability: improved narrowly; three independently malformed JSON/JSONL inputs previously escaped as `JSONDecodeError` tracebacks, now return generic verifier failures; isolated positive and all prior controls retain outcomes.
 - Calibration: unchanged; no valid-input acceptance criteria changed. Synthetic local tests only. File/read errors, NUL paths, and live provider behavior are not claimed.
+
+
+## Round 14 proposal
+- Operability: improved narrowly; isolated invalid UTF-8 at registry, session JSONL, and settlement boundaries changes baseline uncaught traceback/exit 1 to generic FAIL/exit 1 without traceback; valid positive and all prior regression controls retain outcomes.
+- Calibration: unchanged; only decode exception reporting changes, not accepted receipt predicates. Synthetic local tests only; no live provider/authentication claim. Filesystem I/O errors are not caught or claimed.

@@ -128,3 +128,11 @@
 - Nine prior fixture baseline/current outcomes retained: `0/1/0/1/1/0/1/1/1`. R10 duplicate registry/session/settlement plus unique positive: `1/1/1/0` both; R11 four shape negatives and positive remain `1/1/1/1/0` generic failures/pass both.
 - Native `python3` synthetic fixtures only; no provider/daemon/auth activity. Does not claim file/read, NUL, or I/O error handling.
 - Verdict: operability improved narrowly (syntax failures become generic verifier results rather than uncaught tracebacks); calibration unchanged (acceptance rules unchanged).
+
+
+## Round 14 — reject invalid UTF-8 input cleanly
+- Narrowly catch `UnicodeDecodeError` around registry/settlement JSON loads and session JSONL decoding. Invalid UTF-8 now returns `FAIL: input contains invalid UTF-8 encoding` with exit 1 and no traceback. No I/O exceptions are caught; parsing, duplicate-key checks, and receipt acceptance/authentication logic are unchanged.
+- Three independent synthetic fixtures replace exactly one valid input with invalid UTF-8: registry, session, and settlement. Baseline commit `9804b13` raises `UnicodeDecodeError` traceback / exit 1 in each boundary; current returns generic FAIL / exit 1 without traceback. A copied valid positive passes baseline/current (0/0).
+- Native `python3` tests preserved the nine original control exits `0/1/0/1/1/0/1/1/1`; R10 duplicate registry/session/settlement and unique-positive remain `1/1/1/0`; R11 four malformed-shape negatives plus positive remain `1/1/1/1/0`; R12 three malformed-syntax negatives plus positive remain `1/1/1/0`.
+- Synthetic local files only; no provider, daemon, authentication, or runtime behavior claim. Evidence does not cover filesystem I/O errors or other encodings.
+- Verdict: operability improved narrowly (decode failures are concise verifier failures rather than tracebacks); calibration unchanged (valid/invalid receipt acceptance criteria unchanged).
