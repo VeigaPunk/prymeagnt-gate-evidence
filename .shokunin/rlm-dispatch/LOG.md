@@ -114,3 +114,9 @@
 - All original nine current exits remain `0/1/0/1/1/0/1/1/1`; R10 duplicate registry/session/settlement and unique-positive fixture exits remain `1/1/1/0`.
 - Native `python3` only; synthetic local receipts, no provider or daemon invocation, no authentication or provider-behavior claim.
 - Verdict: operability improved narrowly (malformed shapes now fail closed as verifier results rather than uncaught exceptions); calibration unchanged (valid/invalid receipt acceptance criteria are unchanged).
+
+
+## Round 11 evidence correction — fixture path isolation
+- Independent review found that three negative fixtures inherited `registry.sessionFile` pointing to `linked-good`, so those cases had an additional path-mismatch condition. Corrected `registry-model-null`, `session-message-null`, and `settlement-root-null` to reference their own fixture-local session. The registry-root-array case has no `sessionFile` field by shape.
+- Reran baseline (pre-R11 verifier from `8e5acd5^`) and current on all five controls: the four individual negatives each produce baseline uncaught traceback/exit 1 and current generic FAIL/exit 1; isolated valid positive is PASS/0 both. The changed target is sole malformed discriminator on each actionable registry-object/message/settlement case.
+- Original nine exits current: `0/1/0/1/1/0/1/1/1`; R10 individual duplicate registry/session/settlement plus unique positive: `1/1/1/0`. No changes to verdict: operability improved narrowly, calibration unchanged. Synthetic-only; malformed JSON syntax, filesystem errors, and NUL behavior are outside this round's tested shape scope.

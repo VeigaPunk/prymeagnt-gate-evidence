@@ -35,3 +35,7 @@ Isolated local fixtures now independently exercise duplicate registry, nested se
 ## Round 11 proposal
 - Operability: improved narrowly; four isolated malformed-shape cases previously escaped as uncaught `AttributeError`; current verifier returns generic failure, while positive exit remains 0. All nine prior outcomes are preserved.
 - Calibration: unchanged; checks are limited to shape safety before existing acceptance logic. Synthetic tests only; no provider authentication or live behavior claim.
+
+
+## Round 11 evidence correction
+Three negative fixtures' registry `sessionFile` values now resolve inside their own fixture directories rather than `linked-good`. Baseline/current isolated negative and positive outcomes revalidated; see the appended LOG correction and round-11 report correction. Verdict is unchanged: operability improved narrowly; calibration unchanged. This does not claim handling of malformed JSON syntax, filesystem errors, or NUL input.

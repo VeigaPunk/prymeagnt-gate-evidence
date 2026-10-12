@@ -26,3 +26,12 @@ Original nine fixture current exits remain `0/1/0/1/1/0/1/1/1`; this matches the
 - **Calibration: unchanged.** No receipt acceptance criterion changed; only input structure is checked before dereferencing. This synthetic local test does not establish provider authentication, authentication success, provider behavior, or usage/depletion claims.
 
 Scope: `.shokunin/rlm-dispatch/**` and this report only. No integration, manifest, or global harness changes. Canonical Git author and committer: `rlm-dispatch-shokunin <rlm-dispatch@shokunin.local>`.
+
+
+## Evidence correction — fixture-local session paths
+
+Independent review found that three negative fixtures pointed the registry `sessionFile` at the `linked-good` session rather than their own fixture. The `registry-model-null`, `session-message-null`, and `settlement-root-null` registries now point to their respective local `sub-fixture-a/session.jsonl`; `registry-root-array` is intentionally a root array without a session field. This removes the extra path-mismatch factor from the three object-shaped negatives.
+
+Revalidated with native `python3`, separately for each input. Baseline verifier from `8e5acd5^` produced uncaught traceback / exit 1 on each of the four malformed fixtures; current verifier produced generic FAIL / exit 1. The positive fixture passed with exit 0 on baseline and current. Current original nine outcomes remain `0/1/0/1/1/0/1/1/1`; R10 duplicate-registry/session/settlement and unique-positive outcomes remain `1/1/1/0`. These corrections do not change the round verdict: operability improved narrowly; calibration unchanged.
+
+Scope caveat: malformed JSON syntax, file/read errors, and NUL input are unrelated and were not tested or claimed as covered by this shape-validation change. No provider or daemon was invoked.
