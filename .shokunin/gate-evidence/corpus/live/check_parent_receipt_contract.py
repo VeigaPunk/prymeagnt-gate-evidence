@@ -41,6 +41,15 @@ def main():
     exact = run(exact_microseconds)
     assert exact.returncode == 0
     assert json.loads(exact.stdout)["goal_snapshot"]["observed_utc"] == exact_microseconds["observed_utc"]
+    utc_z = {**synthetic, "observed_utc": "2026-10-11T00:00:00.123456Z"}
+    utc_offset = {**synthetic, "observed_utc": "2026-10-11T00:00:00.123456+00:00"}
+    for positive in (utc_z, utc_offset):
+        accepted_utc = run(positive)
+        assert accepted_utc.returncode == 0, accepted_utc.stderr
+        assert json.loads(accepted_utc.stdout)["goal_snapshot"]["observed_utc"] == positive["observed_utc"]
+    unknown_offset = {**synthetic, "observed_utc": "2026-10-11T00:00:00.123456-00:00"}
+    rejected_unknown = run(unknown_offset)
+    assert rejected_unknown.returncode == 2 and not rejected_unknown.stdout
     null = run({"observed_utc": "2026-10-11T00:00:00Z", "goal": None})
     assert null.returncode == 0 and json.loads(null.stdout)["goal_snapshot"]["goal_present"] is False
     negative = subprocess.run(["git", "diff", "--no-index", "--check", "/dev/null", "/dev/stdin"],
