@@ -78,3 +78,6 @@
 ## L1 closure — 2026-10-12
 - Independent review pointers: `promotion-and-session-review` at `984a3a6` reviewed R7; `R8/R7 independent review` at `80b6ce4` (MANIFEST-only closure commit) records R8 no-axis review.
 - L1 admits R7 operability improved, calibration unchanged. R8 is unchanged on both axes; no axis advance. These judgments concern synthetic verifier checks only; they provide no live provider authentication or usage/depletion proof.
+
+## Reviewer-name correction — 2026-10-12
+- The R8 review at `80b6ce4` was by `dispatch-r8-review`, not “R8/R7 independent review.” The earlier wording is preserved above; this line corrects its reviewer attribution.
