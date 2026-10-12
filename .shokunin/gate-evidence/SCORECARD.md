@@ -21,3 +21,7 @@ This append-only correction supersedes the closure-hash references in “L1 clos
 
 ## Round 11 evidence (synthetic, no score assigned)
 Calibration evidence: `corpus/fixtures/r11-syntax-cases.json` gives 3 baseline `datetime.fromisoformat` accepts (`T` space, `+0000`, `+00`) rejected by strict candidate syntax; `python3 .shokunin/gate-evidence/corpus/live/check_parent_receipt_contract.py` passed. Z/+00:00 and six-digit fraction controls pass; -00:00, >6 digits, non-UTC controls reject. Leap second remains unsupported. Proposed calibration improved narrowly; coverage unchanged (no new policy branches). These are synthetic parser/process tests, not host autonomous or acceptance proof.
+
+
+## Round 13 precision-boundary correction (2026-10-12)
+Correction to R13 report counts: accepted fractional widths actually tested are 7 and 19 digits with `Z`, plus 14 digits with `+00:00`; a 20-digit `Z` timestamp (41 chars total) is rejected by the retained 40-character whole-timestamp cap. Arbitrary fraction precision applies only within that cap. Added boundary checker passed (exit 0), work commit `ae613ad428375ad4b81dd963f3718e329c6a934f`. Coverage improved; calibration unchanged remains the proposed round judgment, with no leap-second completeness or host gate proof. See R13 report correction.
