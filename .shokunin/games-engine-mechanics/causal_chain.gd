@@ -45,7 +45,7 @@ func _run() -> void:
     var pickup := load("res://area_pickup.tscn").instantiate() as Area2D
     pickup.set_script(load("res://causal_pickup.gd"))
     pickup.position = Vector2(100, 0)
-    if negative or OS.get_cmdline_user_args().has("--release-test") or OS.get_cmdline_user_args().has("--baseline-release-test"):
+    if negative or OS.get_cmdline_user_args().has("--release-test") or OS.get_cmdline_user_args().has("--baseline-release-test") or OS.get_cmdline_user_args().has("--keyup-test"):
         pickup.collision_mask = 0
     pickup.collected.connect(_collected)
     old.add_child(pickup)
@@ -64,7 +64,8 @@ func _run() -> void:
     actor.moved.connect(_moved)
     await process_frame
     var args := OS.get_cmdline_user_args()
-    var release_test := args.has("--release-test") or args.has("--baseline-release-test")
+    var release_test := args.has("--release-test") or args.has("--baseline-release-test") or args.has("--keyup-test")
+    var keyup_test := args.has("--keyup-test")
     var wrong_key_negative := args.has("--wrong-key-negative")
     var event := InputEventKey.new()
     event.keycode = KEY_F if wrong_key_negative else KEY_E
@@ -85,6 +86,48 @@ func _run() -> void:
         if held_moves < 3:
             push_error("held press did not continue moving")
             quit(2)
+            return
+        if keyup_test:
+            var f_up := InputEventKey.new()
+            f_up.keycode = KEY_F
+            f_up.pressed = false
+            Input.parse_input_event(f_up)
+            for i in range(20):
+                await process_frame
+                if OS.get_cmdline_user_args().has("--any-key-up-mutant") or actor.releases > 0:
+                    break
+            if actor.releases != 0 or not actor.intent:
+                push_error("unrelated F release cleared E intent")
+                quit(2)
+                return
+            var before_f_up_frames: int = actor.moves
+            for i in range(6):
+                await physics_frame
+            if actor.moves <= before_f_up_frames:
+                push_error("movement stopped after unrelated F release")
+                quit(2)
+                return
+            event = InputEventKey.new()
+            event.keycode = KEY_E
+            event.pressed = false
+            Input.parse_input_event(event)
+            for i in range(20):
+                await process_frame
+                if actor.releases > 0:
+                    break
+            if actor.releases != 1 or actor.intent:
+                push_error("matching E release callback missing or intent remained set")
+                quit(2)
+                return
+            var after_e_up_moves: int = actor.moves
+            for i in range(10):
+                await physics_frame
+            if actor.moves != after_e_up_moves:
+                push_error("movement continued after matching E release")
+                quit(2)
+                return
+            print("PASS keyup E_press_receipts=1 F_release_receipts=0 E_release_receipts=1 unrelated_release_moves=6 post_E_release_moves=0 scene=A")
+            quit(0)
             return
         event = InputEventKey.new()
         event.keycode = KEY_E
