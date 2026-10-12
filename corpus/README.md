@@ -17,3 +17,5 @@ history lives on the craft/* branches of this repo; the fleet ledger is
 .shokunin/MANIFEST.json there.
 
 Province: prime-agent goal/autonomous-gate receipts and honest stop classification (compare_parent_receipt.py). Shonen; end-to-end box open — r20 documented the blocker.
+
+Upstream: https://github.com/VeigaPunk/prymeagnt-gate-evidence (branch main carries this corpus; craft/* branches carry round history). Local execution references it with: git fetch gate-evidence main
