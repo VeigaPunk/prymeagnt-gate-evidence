@@ -38,3 +38,12 @@ python3 "$V/verify_receipt.py" "$V/fixtures/duplicate-session-only/registry.json
 python3 "$V/verify_receipt.py" "$V/fixtures/duplicate-settlement-only/registry.json" "$V/fixtures/duplicate-settlement-only/sub-fixture-a/session.jsonl" "$V/fixtures/duplicate-settlement-only/settlement.json"
 python3 "$V/verify_receipt.py" "$V/fixtures/duplicate-unique-positive/registry.json" "$V/fixtures/duplicate-unique-positive/sub-fixture-a/session.jsonl" "$V/fixtures/duplicate-unique-positive/settlement.json"
 ```
+
+
+R12 isolated malformed-syntax fixtures (registry JSON, session JSONL, settlement JSON each fail with a generic syntax error; valid fixture passes):
+```sh
+python3 "$V/verify_receipt.py" "$V/fixtures/syntax-registry-only/registry.json" "$V/fixtures/syntax-registry-only/sub-fixture-a/session.jsonl" "$V/fixtures/syntax-registry-only/settlement.json"
+python3 "$V/verify_receipt.py" "$V/fixtures/syntax-session-only/registry.json" "$V/fixtures/syntax-session-only/sub-fixture-a/session.jsonl" "$V/fixtures/syntax-session-only/settlement.json"
+python3 "$V/verify_receipt.py" "$V/fixtures/syntax-settlement-only/registry.json" "$V/fixtures/syntax-settlement-only/sub-fixture-a/session.jsonl" "$V/fixtures/syntax-settlement-only/settlement.json"
+python3 "$V/verify_receipt.py" "$V/fixtures/syntax-unique-positive/registry.json" "$V/fixtures/syntax-unique-positive/sub-fixture-a/session.jsonl" "$V/fixtures/syntax-unique-positive/settlement.json"
+```

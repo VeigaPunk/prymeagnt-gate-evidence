@@ -120,3 +120,11 @@
 - Independent review found that three negative fixtures inherited `registry.sessionFile` pointing to `linked-good`, so those cases had an additional path-mismatch condition. Corrected `registry-model-null`, `session-message-null`, and `settlement-root-null` to reference their own fixture-local session. The registry-root-array case has no `sessionFile` field by shape.
 - Reran baseline (pre-R11 verifier from `8e5acd5^`) and current on all five controls: the four individual negatives each produce baseline uncaught traceback/exit 1 and current generic FAIL/exit 1; isolated valid positive is PASS/0 both. The changed target is sole malformed discriminator on each actionable registry-object/message/settlement case.
 - Original nine exits current: `0/1/0/1/1/0/1/1/1`; R10 individual duplicate registry/session/settlement plus unique positive: `1/1/1/0`. No changes to verdict: operability improved narrowly, calibration unchanged. Synthetic-only; malformed JSON syntax, filesystem errors, and NUL behavior are outside this round's tested shape scope.
+
+
+## Round 12 — handle malformed JSON syntax
+- Added narrow `json.JSONDecodeError` handling at the registry/settlement JSON and session JSONL parsing boundaries. Malformed syntax returns one generic verifier error; duplicate-key handling remains separate and unchanged. No broad `Exception` or `ValueError` handling was added.
+- Three isolated syntax fixtures independently exercise malformed registry JSON, session JSONL, and settlement JSON; each uses valid matching data in the other pathways. Baseline at `1f888d5` raised an uncaught traceback / exit 1 for each; current returns generic `FAIL: input contains malformed JSON syntax` / exit 1 without traceback. Isolated valid positive passes / exit 0 both.
+- Nine prior fixture baseline/current outcomes retained: `0/1/0/1/1/0/1/1/1`. R10 duplicate registry/session/settlement plus unique positive: `1/1/1/0` both; R11 four shape negatives and positive remain `1/1/1/1/0` generic failures/pass both.
+- Native `python3` synthetic fixtures only; no provider/daemon/auth activity. Does not claim file/read, NUL, or I/O error handling.
+- Verdict: operability improved narrowly (syntax failures become generic verifier results rather than uncaught tracebacks); calibration unchanged (acceptance rules unchanged).

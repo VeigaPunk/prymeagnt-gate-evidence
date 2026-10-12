@@ -37,6 +37,8 @@ def verify(registry_path, session_path, settlement_path):
         settlement = load(settlement_path)
     except DuplicateKeyError:
         return ["input contains duplicate JSON object keys"]
+    except json.JSONDecodeError:
+        return ["input contains malformed JSON syntax"]
     if not isinstance(registry, dict) or not isinstance(settlement, dict):
         return ["input JSON shape is invalid"]
     model = registry.get("model")
@@ -73,6 +75,8 @@ def verify(registry_path, session_path, settlement_path):
         events = [parse_json(line) for line in session_file.read_text(encoding="utf-8").splitlines() if line.strip()]
     except DuplicateKeyError:
         return ["input contains duplicate JSON object keys"]
+    except json.JSONDecodeError:
+        return ["input contains malformed JSON syntax"]
     if any(not isinstance(event, dict) for event in events):
         return ["input JSON shape is invalid"]
     for event in events:

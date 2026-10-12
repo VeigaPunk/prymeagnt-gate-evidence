@@ -39,3 +39,8 @@ Isolated local fixtures now independently exercise duplicate registry, nested se
 
 ## Round 11 evidence correction
 Three negative fixtures' registry `sessionFile` values now resolve inside their own fixture directories rather than `linked-good`. Baseline/current isolated negative and positive outcomes revalidated; see the appended LOG correction and round-11 report correction. Verdict is unchanged: operability improved narrowly; calibration unchanged. This does not claim handling of malformed JSON syntax, filesystem errors, or NUL input.
+
+
+## Round 12 proposal
+- Operability: improved narrowly; three independently malformed JSON/JSONL inputs previously escaped as `JSONDecodeError` tracebacks, now return generic verifier failures; isolated positive and all prior controls retain outcomes.
+- Calibration: unchanged; no valid-input acceptance criteria changed. Synthetic local tests only. File/read errors, NUL paths, and live provider behavior are not claimed.
