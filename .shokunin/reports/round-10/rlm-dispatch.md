@@ -19,3 +19,16 @@ python3 "$V/verify_receipt.py" "$V/fixtures/duplicate-keys/registry.json" "$V/fi
 
 ## Axis verdict
 Calibration improved narrowly: last-wins contradictory duplicate values no longer yield PASS. Operability unchanged: all nine controls retain their prior outcomes. Synthetic fixtures only; no live authentication, provider behavior, or usage/depletion claim.
+
+
+## Evidence correction — isolated parser pathways
+An independent review noted that the first tenth fixture combined registry and session duplicates. To isolate evidence, four separate synthetic fixture directories were added and retained:
+
+| Fixture | Exact invocation inputs (under `.shokunin/rlm-dispatch/corpus/verification/fixtures/`) | Baseline exit | Current exit |
+|---|---|---:|---:|
+| Registry duplicate only | `duplicate-registry-only/registry.json`, `duplicate-registry-only/sub-fixture-a/session.jsonl`, `duplicate-registry-only/settlement.json` | 0 | 1 |
+| Nested session `role` duplicate only | `duplicate-session-only/registry.json`, `duplicate-session-only/sub-fixture-a/session.jsonl`, `duplicate-session-only/settlement.json` | 0 | 1 |
+| Settlement `status` duplicate only | `duplicate-settlement-only/registry.json`, `duplicate-settlement-only/sub-fixture-a/session.jsonl`, `duplicate-settlement-only/settlement.json` | 0 | 1 |
+| Unique positive control | `duplicate-unique-positive/registry.json`, `duplicate-unique-positive/sub-fixture-a/session.jsonl`, `duplicate-unique-positive/settlement.json` | 0 | 0 |
+
+All were run with native `python3`; README contains exact runnable commands. Each negative changes only the named input pathway. Original nine exits remain `0/1/0/1/1/0/1/1/1`. These are private synthetic copies, not live auth/provider evidence.
