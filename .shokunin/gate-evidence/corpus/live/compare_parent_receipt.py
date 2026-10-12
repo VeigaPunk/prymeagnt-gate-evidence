@@ -26,16 +26,23 @@ def parse_status(raw):
     # Z/+00:00; it is not evidence that this clock value is UTC-referenced.
     if re.search(r"-00:00$", timestamp):
         raise ValueError("unknown local offset is not accepted as UTC")
-    # datetime.fromisoformat stores at most microseconds; reject rather than
-    # silently changing a caller-supplied timestamp with finer precision.
-    if re.search(r"\.\d{7,}(?=(?:Z|[+-]\d{2}:?\d{2})$)", timestamp):
-        raise ValueError("UTC timestamp precision exceeds microseconds")
+    # RFC3339 permits arbitrary fractional-second precision. datetime stores
+    # only microseconds, so use a validation copy and retain the original value.
     # datetime.fromisoformat accepts non-RFC3339 variants (space separator,
     # basic +0000 offset); require the RFC3339 timestamp shape first.
-    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}[Tt]\d{2}:\d{2}:\d{2}(?:\.\d{1,6})?(?:[Zz]|[+-]\d{2}:\d{2})", timestamp):
+    if not re.fullmatch(r"\d{4}-\d{2}-\d{2}[Tt]\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:[Zz]|[+-]\d{2}:\d{2})", timestamp):
         raise ValueError("invalid UTC timestamp syntax")
     try:
-        clock = datetime.fromisoformat(timestamp[:-1] + "+00:00" if timestamp[-1:] in "Zz" else timestamp)
+        zone_match = re.search(r"(?:[Zz]|[+-]\d{2}:\d{2})$", timestamp)
+        if zone_match is None:
+            raise ValueError("invalid UTC timestamp")
+        body, zone = timestamp[:zone_match.start()], zone_match.group(0)
+        if "." in body:
+            head, fraction = body.rsplit(".", 1)
+            body = head + "." + fraction[:6]
+        validation_timestamp = body + zone
+        clock = datetime.fromisoformat(validation_timestamp[:-1] + "+00:00"
+                                       if validation_timestamp[-1:] in "Zz" else validation_timestamp)
     except ValueError as exc:
         raise ValueError("invalid UTC timestamp") from exc
     if clock.utcoffset() is None or clock.utcoffset().total_seconds() != 0:
