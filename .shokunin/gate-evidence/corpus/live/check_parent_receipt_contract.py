@@ -47,6 +47,16 @@ def main():
         accepted_utc = run(positive)
         assert accepted_utc.returncode == 0, accepted_utc.stderr
         assert json.loads(accepted_utc.stdout)["goal_snapshot"]["observed_utc"] == positive["observed_utc"]
+    # RFC3339 §5.6 NOTE: lowercase t/z are equivalent to uppercase T/Z.
+    lower_tz_cases = (
+        "2026-10-11t00:00:00z",
+        "2026-10-11T00:00:00z",
+    )
+    for timestamp in lower_tz_cases:
+        lowercase = {**synthetic, "observed_utc": timestamp}
+        accepted_lowercase = run(lowercase)
+        assert accepted_lowercase.returncode == 0, accepted_lowercase.stderr
+        assert json.loads(accepted_lowercase.stdout)["goal_snapshot"]["observed_utc"] == timestamp
     unknown_offset = {**synthetic, "observed_utc": "2026-10-11T00:00:00.123456-00:00"}
     rejected_unknown = run(unknown_offset)
     assert rejected_unknown.returncode == 2 and not rejected_unknown.stdout
