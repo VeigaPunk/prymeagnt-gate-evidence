@@ -37,11 +37,15 @@ def main():
     accepted_precision = run(precise)
     assert accepted_precision.returncode == 0
     assert json.loads(accepted_precision.stdout)["goal_snapshot"]["observed_utc"] == precise["observed_utc"]
-    for digits, zone in (("1234567", "Z"), ("12345678901234", "+00:00")):
+    for digits, zone in (("1234567", "Z"), ("12345678901234", "+00:00"),
+                         ("1234567890123456789", "Z")):
         exact_fraction = {**synthetic, "observed_utc": f"2026-10-11T00:00:00.{digits}{zone}"}
         accepted_fraction = run(exact_fraction)
         assert accepted_fraction.returncode == 0, accepted_fraction.stderr
         assert json.loads(accepted_fraction.stdout)["goal_snapshot"]["observed_utc"] == exact_fraction["observed_utc"]
+    too_long_fraction = {**synthetic, "observed_utc": "2026-10-11T00:00:00.12345678901234567890Z"}
+    rejected_length = run(too_long_fraction)
+    assert rejected_length.returncode == 2 and not rejected_length.stdout
     bad_calendar = {**synthetic, "observed_utc": "2023-02-29T00:00:00.1234567Z"}
     invalid_date = run(bad_calendar)
     assert invalid_date.returncode == 2 and not invalid_date.stdout
